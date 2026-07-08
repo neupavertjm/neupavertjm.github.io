@@ -148,6 +148,35 @@
     line-height: 1.5;
   }
 
+  .examples-label {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .examples {
+    list-style: none;
+    padding: 0;
+  }
+
+  .examples li {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    padding-left: 0.75rem;
+    position: relative;
+  }
+
+  .examples li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -302,6 +331,17 @@
         <span class="desc">Asesoramiento en terminografía, documentación de dominios, estrategia terminológica.</span>
       </div>
     </div>
+
+    <p class="examples-label">Ver ejemplos</p>
+    <ul class="examples">
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7467504886033592320/" target="_blank" rel="noopener">El contexto también traduce</a></li>
+      <li><a href="https://www.linkedin.com/posts/juan-manuel-neupavert_hasta-qu%C3%A9-punto-puede-una-localizaci%C3%B3n-construir-activity-7451928924869160960-xkXi" target="_blank" rel="noopener">¿Hasta qué punto puede una localización construir la personalidad de un personaje?</a></li>
+      <li><a href="https://www.linkedin.com/posts/juan-manuel-neupavert_una-localizaci%C3%B3n-puede-ser-t%C3%A9cnicamente-activity-7420554830319882240-i-3x" target="_blank" rel="noopener">¿Una localización puede ser técnicamente correcta y aun así fallar al jugador?</a></li>
+      <li><a href="https://www.linkedin.com/posts/juan-manuel-neupavert_hasta-qu%C3%A9-punto-conocemos-de-verdad-los-activity-7410276605794725888-itYm" target="_blank" rel="noopener">¿Hasta qué punto conocemos de verdad los idiomas cuando traducimos o localizamos?</a></li>
+      <li><a href="https://www.linkedin.com/posts/juan-manuel-neupavert_hasta-qu%C3%A9-punto-puede-cambiar-nuestra-percepci%C3%B3n-activity-7398723810566373376-qpYF" target="_blank" rel="noopener">¿Hasta qué punto puede cambiar nuestra percepción cuando el idioma no está cuidado?</a></li>
+      <li><a href="https://www.linkedin.com/posts/juan-manuel-neupavert_detraersdeltaezrmino-traducciaejn-terminologaeda-activity-7373337918356148225-onyy" target="_blank" rel="noopener">La traducción de videojuegos sigue con los problemas de siempre</a></li>
+      <li><a href="https://www.linkedin.com/posts/juan-manuel-neupavert_detraersdeltaezrmino-terminologaeda-traducciaejnespecializada-activity-7370731377429921792-daMc" target="_blank" rel="noopener">Cuando la «tiza» se convierte en un error terminológico</a></li>
+    </ul>
   </section>
 
   <hr>
