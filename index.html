@@ -284,6 +284,30 @@
     * { transition: none !important; }
   }
 
+  /* ---- project cards ---- */
+  .project-cards { display: flex; flex-direction: column; gap: 1.4rem; }
+  .pcard + .pcard { border-top: 1px solid var(--rule); padding-top: 1.4rem; }
+  .pcard-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+  .pcard-head .project-title { margin-bottom: 0; }
+  .pmeta {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 0.12rem 0.55rem; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted);
+  }
+  .pdesc { font-size: 0.95rem; line-height: 1.6; }
+  .pstack {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.8rem; color: var(--muted); margin-top: 0.45rem;
+  }
+  .shots { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+  .shots a {
+    display: block; line-height: 0; border: 1px solid var(--rule); border-radius: 8px;
+    overflow: hidden; transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .shots img { height: 90px; width: auto; display: block; }
+  .shots a:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(0,0,0,0.14); }
+  @media (max-width: 640px) { .shots img { height: 66px; } }
+
   /* ---- language toggle (EN/ES) ---- */
   html:not([data-lang="en"]) [lang="en"] { display: none; }
   html[data-lang="en"] [lang="es"] { display: none; }
@@ -403,28 +427,50 @@
   <section>
     <p class="label" lang="es">Proyectos</p>
     <p class="label" lang="en">Projects</p>
-    <div class="projects-grid">
-      <div class="project">
-        <p class="project-title"><a href="https://jmneupavert-alzolab.hf.space/" target="_blank" rel="noopener">AlzoLab</a></p>
-        <p class="project-meta" lang="es">En producción</p>
-        <p class="project-meta" lang="en">In production</p>
-        <p lang="es">Laboratorio de lingüística de corpus en el navegador. Importación, limpieza regex, análisis morfosintáctico con spaCy, extracción terminológica C-value, concordancias KWIC.</p>
-        <p lang="en">Browser-based corpus linguistics lab. Import, regex cleaning, morphosyntactic analysis with spaCy, C-value term extraction, KWIC concordances.</p>
-      </div>
-      <div class="project">
-        <p class="project-title"><a href="https://www.neupaterm.com" target="_blank" rel="noopener">NeupaTerm</a> <span class="project-parens" lang="es">(Plataforma terminológica)</span><span class="project-parens" lang="en">(Terminology platform)</span></p>
-        <p class="project-meta" lang="es">En desarrollo</p>
-        <p class="project-meta" lang="en">In development</p>
-        <p lang="es">Gestión terminológica multilingüe. Importación y exportación estándar (TBX v2/v3, XLIFF 2.1, TMX, CSV, Excel). Extracción NLP. Aplicación de escritorio offline.</p>
-        <p lang="en">Multilingual terminology management. Standard import/export (TBX v2/v3, XLIFF 2.1, TMX, CSV, Excel). NLP-based extraction. Offline desktop application.</p>
-      </div>
-      <div class="project">
-        <p class="project-title">NeupaLang <span class="project-parens" lang="es">(Documentación lingüística)</span><span class="project-parens" lang="en">(Language documentation)</span></p>
-        <p class="project-meta" lang="es">En desarrollo</p>
-        <p class="project-meta" lang="en">In development</p>
-        <p lang="es">Documentación de lenguas minoritarias. Interoperabilidad FLEx/ELAN/CLDF. Glosa interlineal Leipzig. Consentimiento informado (CARE/FAIR). Editor offline.</p>
-        <p lang="en">Documentation of minority and endangered languages. FLEx/ELAN/CLDF interoperability. Leipzig interlinear glossing. Informed consent (CARE/FAIR). Offline editor.</p>
-      </div>
+    <div class="project-cards">
+
+      <article class="pcard">
+        <div class="pcard-head">
+          <p class="project-title"><a href="https://jmneupavert-alzolab.hf.space/" target="_blank" rel="noopener">AlzoLab</a></p>
+          <span class="pmeta" lang="es">En producción</span><span class="pmeta" lang="en">In production</span>
+        </div>
+        <p class="pdesc" lang="es">Laboratorio de lingüística de corpus en el navegador, sin escribir código. Flujo completo: importación multifuente (web, Wikipedia, archivos) → limpieza y normalización → análisis morfosintáctico con spaCy → extracción terminológica (C-value) → concordancias KWIC → exportación.</p>
+        <p class="pdesc" lang="en">Browser-based corpus-linguistics lab, no coding required. End-to-end flow: multi-source import (web, Wikipedia, files) → cleaning and normalization → morphosyntactic analysis with spaCy → term extraction (C-value) → KWIC concordances → export.</p>
+        <p class="pstack">Python · Streamlit · spaCy</p>
+        <div class="shots">
+          <a href="assets/projects/alzolab-importar.png" target="_blank" rel="noopener"><img src="assets/projects/alzolab-importar.png" alt="AlzoLab — importación" loading="lazy"></a>
+          <a href="assets/projects/alzolab-limpiar.png" target="_blank" rel="noopener"><img src="assets/projects/alzolab-limpiar.png" alt="AlzoLab — limpieza y normalización" loading="lazy"></a>
+          <a href="assets/projects/alzolab-analizar.png" target="_blank" rel="noopener"><img src="assets/projects/alzolab-analizar.png" alt="AlzoLab — análisis con spaCy" loading="lazy"></a>
+          <a href="assets/projects/alzolab-concordancia.png" target="_blank" rel="noopener"><img src="assets/projects/alzolab-concordancia.png" alt="AlzoLab — concordancias KWIC" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="pcard">
+        <div class="pcard-head">
+          <p class="project-title"><a href="https://www.neupaterm.com" target="_blank" rel="noopener">NeupaTerm</a> <span class="project-parens" lang="es">(Plataforma terminológica)</span><span class="project-parens" lang="en">(Terminology platform)</span></p>
+          <span class="pmeta" lang="es">En desarrollo</span><span class="pmeta" lang="en">In development</span>
+        </div>
+        <p class="pdesc" lang="es">Plataforma SaaS de gestión terminológica multilingüe, independiente del CAT. Glosarios y fichas terminológicas bilingües por pares de idiomas (ES · EN · PT · DE · IT · FR): categoría lingüística, mecanismo de incorporación, contextos de uso y relaciones conceptuales. Extracción de candidatos con NLP y consulta de la terminología desde Word, Trados, memoQ o cualquier otra aplicación (NeupaTerm Connect).</p>
+        <p class="pdesc" lang="en">CAT-independent, multilingual terminology-management SaaS. Glossaries and bilingual terminological records paired across languages (ES · EN · PT · DE · IT · FR): linguistic category, incorporation mechanism, usage contexts and conceptual relations. NLP-based candidate extraction and terminology lookup from Word, Trados, memoQ or any other application (NeupaTerm Connect).</p>
+        <p class="pstack">React/Vite · FastAPI · PostgreSQL · spaCy</p>
+        <div class="shots">
+          <a href="assets/projects/neupaterm-landing.png" target="_blank" rel="noopener"><img src="assets/projects/neupaterm-landing.png" alt="NeupaTerm — página de acceso" loading="lazy"></a>
+          <a href="assets/projects/neupaterm-dashboard.png" target="_blank" rel="noopener"><img src="assets/projects/neupaterm-dashboard.png" alt="NeupaTerm — panel de inicio" loading="lazy"></a>
+          <a href="assets/projects/neupaterm-ficha.png" target="_blank" rel="noopener"><img src="assets/projects/neupaterm-ficha.png" alt="NeupaTerm — ficha terminológica" loading="lazy"></a>
+          <a href="assets/projects/neupaterm-connect.png" target="_blank" rel="noopener"><img src="assets/projects/neupaterm-connect.png" alt="NeupaTerm Connect — acceso por API" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="pcard">
+        <div class="pcard-head">
+          <p class="project-title">NeupaLang <span class="project-parens" lang="es">(Documentación lingüística)</span><span class="project-parens" lang="en">(Language documentation)</span></p>
+          <span class="pmeta" lang="es">En desarrollo</span><span class="pmeta" lang="en">In development</span>
+        </div>
+        <p class="pdesc" lang="es">Plataforma para la documentación de lenguas minoritarias y en peligro. Interoperabilidad FLEx/ELAN/CLDF, glosa interlineal Leipzig, consentimiento informado (CARE/FAIR) y editor offline.</p>
+        <p class="pdesc" lang="en">Platform for documenting minority and endangered languages. FLEx/ELAN/CLDF interoperability, Leipzig interlinear glossing, informed consent (CARE/FAIR) and offline editor.</p>
+        <p class="pstack">FastAPI · React · Tauri</p>
+      </article>
+
     </div>
   </section>
 
