@@ -230,7 +230,7 @@ PROJECTS.append(build(
     badge="En desarrollo",
     stack="React/Vite · FastAPI · PostgreSQL · spaCy",
     que_hace_paragraphs=[
-        "Centraliza la terminología de un equipo o proyecto en fichas bilingües estructuradas — no una hoja de cálculo — con categoría lingüística, mecanismo de incorporación, contextos de uso y relaciones conceptuales, por pares de idiomas (ES · EN · PT · DE · IT · FR).",
+        "Centraliza la terminología de un equipo o proyecto en fichas bilingües estructuradas — no una hoja de cálculo — con categoría gramatical, contextos de uso y equivalencias por idioma, por pares de idiomas (ES · EN · PT · DE · IT · FR).",
         "Incluye extracción de términos candidatos mediante NLP, y NeupaTerm Connect permite consultar esa terminología directamente desde Word, Trados, memoQ o cualquier otra aplicación, sin salir a buscarla aparte.",
     ],
     images=[
