@@ -281,6 +281,31 @@
 
   .contact a { font-weight: 500; }
 
+  .contact-form { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.7rem; max-width: 420px; }
+  .contact-form label {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--muted); margin-bottom: -0.35rem;
+  }
+  .contact-form input, .contact-form textarea {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.9rem; padding: 0.55rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px;
+    background: var(--bg); color: var(--ink); width: 100%;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+  .contact-form textarea { min-height: 110px; resize: vertical; font-family: inherit; }
+  .contact-form .honeypot { position: absolute; left: -9999px; }
+  .contact-form button {
+    align-self: flex-start; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.9rem; font-weight: 600; color: #fff; background: var(--accent); border: none;
+    border-radius: 999px; padding: 0.55rem 1.4rem; cursor: pointer; transition: background 0.15s ease;
+  }
+  .contact-form button:hover { background: var(--accent-hover); }
+  .contact-form button:disabled { opacity: 0.6; cursor: default; }
+  .form-status { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; font-size: 0.85rem; }
+  .form-status.ok { color: #16794a; }
+  .form-status.err { color: #c0392b; }
+
   .foot {
     margin-top: 3rem;
     padding-top: 1.25rem;
@@ -712,6 +737,74 @@
       <a href="https://github.com/neupavertjm" target="_blank" rel="noopener">GitHub</a> ·
       <a href="https://www.linkedin.com/in/juan-manuel-neupavert/" target="_blank" rel="noopener">LinkedIn</a>
     </p>
+
+    <form class="contact-form" id="contactForm">
+      <input type="hidden" name="access_key" value="TU_ACCESS_KEY_DE_WEB3FORMS">
+      <input type="hidden" name="subject" value="Nuevo contacto desde neupavertjm.github.io">
+      <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+
+      <label for="cf-name" lang="es">Nombre</label>
+      <label for="cf-name" lang="en">Name</label>
+      <input type="text" id="cf-name" name="name" required>
+
+      <label for="cf-email" lang="es">Correo</label>
+      <label for="cf-email" lang="en">Email</label>
+      <input type="email" id="cf-email" name="email" required>
+
+      <label for="cf-message" lang="es">Mensaje</label>
+      <label for="cf-message" lang="en">Message</label>
+      <textarea id="cf-message" name="message" required></textarea>
+
+      <button type="submit" lang="es">Enviar</button>
+      <button type="submit" lang="en">Send</button>
+
+      <p class="form-status" id="cf-status-es" lang="es" hidden></p>
+      <p class="form-status" id="cf-status-en" lang="en" hidden></p>
+    </form>
+    <script>
+      (function () {
+        var form = document.getElementById('contactForm');
+        if (!form) return;
+        var statusEs = document.getElementById('cf-status-es');
+        var statusEn = document.getElementById('cf-status-en');
+        var MSG = {
+          ok: {
+            es: '¡Mensaje enviado! Te responderé lo antes posible.',
+            en: "Message sent! I'll get back to you as soon as possible."
+          },
+          err: {
+            es: 'Algo ha fallado. Escríbeme directamente a neupavertjm@neupaterm.com.',
+            en: 'Something went wrong. Please email me directly at neupavertjm@neupaterm.com.'
+          }
+        };
+        function showStatus(kind) {
+          statusEs.textContent = MSG[kind].es;
+          statusEn.textContent = MSG[kind].en;
+          statusEs.className = 'form-status ' + (kind === 'ok' ? 'ok' : 'err');
+          statusEn.className = 'form-status ' + (kind === 'ok' ? 'ok' : 'err');
+          statusEs.hidden = false;
+          statusEn.hidden = false;
+        }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var button = form.querySelector('button[type="submit"]:not([hidden])') || form.querySelector('button');
+          var buttons = form.querySelectorAll('button[type="submit"]');
+          buttons.forEach(function (b) { b.disabled = true; });
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: new FormData(form)
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              showStatus(data.success ? 'ok' : 'err');
+              if (data.success) form.reset();
+            })
+            .catch(function () { showStatus('err'); })
+            .finally(function () { buttons.forEach(function (b) { b.disabled = false; }); });
+        });
+      })();
+    </script>
   </section>
 
   <footer class="foot">
