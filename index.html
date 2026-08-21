@@ -328,29 +328,28 @@
   .shots a:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(0,0,0,0.14); }
   @media (max-width: 640px) { .shots img { height: 66px; } }
 
-  .pmore { margin-top: 0.7rem; }
-  .pmore summary {
-    cursor: pointer; list-style: none;
+  .pmanual {
+    margin-top: 0.7rem; display: inline-flex; align-items: center; gap: 0.45rem;
     font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
     font-size: 0.82rem; font-weight: 600; color: var(--accent);
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    padding: 0.15rem 0;
+    border: 1px solid var(--accent); border-radius: 999px; padding: 0.32rem 0.85rem 0.32rem 0.6rem;
+    transition: background 0.15s ease, color 0.15s ease;
   }
-  .pmore summary::-webkit-details-marker { display: none; }
-  .pmore summary::before {
-    content: '+'; display: inline-flex; align-items: center; justify-content: center;
-    width: 1.1rem; height: 1.1rem; border: 1px solid var(--accent); border-radius: 999px;
-    font-size: 0.75rem; line-height: 1;
+  .pmanual:hover { background: var(--accent); color: #fff; }
+  .pmanual .pmanual-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.15rem; height: 1.15rem; border-radius: 4px; background: var(--accent); color: #fff;
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.02em;
   }
-  .pmore[open] summary::before { content: '\2212'; }
-  .pmore summary:hover { color: var(--accent-hover); }
-  .pmore summary:hover::before { border-color: var(--accent-hover); }
-  .pmore-body {
-    margin-top: 0.55rem; padding: 0.7rem 0 0.1rem 1.5rem; border-left: 2px solid var(--rule);
-    margin-left: 0.5rem; font-size: 0.9rem; line-height: 1.65;
+  .pmanual:hover .pmanual-icon { background: #fff; color: var(--accent); }
+
+  .projects-note {
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.88rem; line-height: 1.55; color: var(--body);
+    border-left: 3px solid var(--orange); padding: 0.15rem 0 0.15rem 0.9rem;
+    margin-bottom: 1.4rem;
   }
-  .pmore-body p + p { margin-top: 0.55rem; }
-  .pmore-body strong { color: var(--ink); }
+  .projects-note a { font-weight: 600; }
 
   /* ---- language toggle (EN/ES) ---- */
   html:not([data-lang="en"]) [lang="en"] { display: none; }
@@ -500,6 +499,8 @@
   <section>
     <p class="label" lang="es">Proyectos</p>
     <p class="label" lang="en">Projects</p>
+    <p class="projects-note" lang="es">Son ejemplos de lo que sé construir, no la lista completa de lo que ofrezco — cada uno tiene un manual en PDF con más detalle. Si tu necesidad es distinta, <a href="mailto:neupavertjm@neupaterm.com">hablemos</a>.</p>
+    <p class="projects-note" lang="en">These are examples of what I can build, not the full list of what I offer — each one has a PDF manual with more detail. If your need is different, <a href="mailto:neupavertjm@neupaterm.com">let's talk</a>.</p>
     <div class="project-cards">
 
       <article class="pcard">
@@ -511,18 +512,11 @@
         <p class="pdesc" lang="en">Turns scanned documents into searchable, editable text, entirely offline. Automatically detects which pages already have digital text and which need optical recognition, and is transparent about pages it couldn't read well instead of guessing.</p>
         <p class="pstack" lang="es">Python · Transformers · PyMuPDF · 100% local</p>
         <p class="pstack" lang="en">Python · Transformers · PyMuPDF · fully local</p>
-        <details class="pmore">
-          <summary lang="es">¿Qué hace y qué servicios puedo ofrecerte con esto?</summary>
-          <summary lang="en">What does it do &amp; what services can I offer with it?</summary>
-          <div class="pmore-body" lang="es">
-            <p><strong>Qué hace</strong> — Recibe un PDF escaneado y, página a página, decide si ya tiene texto digital o necesita reconocimiento óptico. El texto reconocido queda marcado con la página exacta de origen, así que cualquier búsqueda o cita posterior apunta siempre al lugar correcto del documento original. Cuando no puede leer algo con confianza, lo señala en vez de rellenarlo con una suposición.</p>
-            <p><strong>Servicios que puedo ofrecer con esto</strong> — Digitalización de archivo histórico o administrativo (actas, expedientes, escrituras) para que quede buscable en texto; migración puntual de papel a formato digital para despachos y gestorías; y como primer paso de un flujo mayor de consulta documental (ver RagDesk, debajo).</p>
-          </div>
-          <div class="pmore-body" lang="en">
-            <p><strong>What it does</strong> — Takes a scanned PDF and, page by page, decides whether it already has digital text or needs optical recognition. Recognized text is tagged with its exact source page, so any later search or citation always points back to the right place in the original document. When it can't read something confidently, it flags it instead of guessing.</p>
-            <p><strong>Services I can offer with this</strong> — Digitizing historical or administrative archives (minutes, case files, deeds) into searchable text; one-off paper-to-digital migration for firms and agencies; and as the first step of a larger document-consultation pipeline (see RagDesk, below).</p>
-          </div>
-        </details>
+        <a class="pmanual" href="assets/manuals/ocr-digitalizador.pdf" target="_blank" rel="noopener">
+          <span class="pmanual-icon">PDF</span>
+          <span lang="es">¿Quieres más información sobre este programa?</span>
+          <span lang="en">Want more information about this program?</span>
+        </a>
       </article>
 
       <article class="pcard">
@@ -539,18 +533,11 @@
           <a href="assets/projects/ragdesk-respuesta.png" target="_blank" rel="noopener"><img src="assets/projects/ragdesk-respuesta.png" alt="RagDesk — respuesta con cita a la página" loading="lazy"></a>
           <a href="assets/projects/ragdesk-documentos.png" target="_blank" rel="noopener"><img src="assets/projects/ragdesk-documentos.png" alt="RagDesk — documentos ingestados" loading="lazy"></a>
         </div>
-        <details class="pmore">
-          <summary lang="es">¿Qué hace y qué servicios puedo ofrecerte con esto?</summary>
-          <summary lang="en">What does it do &amp; what services can I offer with it?</summary>
-          <div class="pmore-body" lang="es">
-            <p><strong>Qué hace</strong> — Indexa una colección de documentos (los que salen del OCR, o cualquier PDF/Word ya digital) y responde preguntas sobre ellos en lenguaje natural, citando siempre la página exacta de donde saca la respuesta. Puede correr enteramente en el ordenador del cliente, sin que ningún documento salga de la máquina.</p>
-            <p><strong>Servicios que puedo ofrecer con esto</strong> — Asistente de consulta interna para despachos y gestorías sobre su propia normativa, contratos o expedientes; puesta en marcha de un "buscador inteligente" privado sobre un archivo ya digitalizado; mantenimiento y ampliación mensual conforme se añaden documentos nuevos.</p>
-          </div>
-          <div class="pmore-body" lang="en">
-            <p><strong>What it does</strong> — Indexes a document collection (OCR output, or any PDF/Word already digital) and answers natural-language questions about them, always citing the exact page the answer came from. It can run entirely on the client's own machine, with no document ever leaving it.</p>
-            <p><strong>Services I can offer with this</strong> — An internal Q&amp;A assistant for firms and agencies over their own regulations, contracts or case files; setting up a private "smart search" over an already-digitized archive; monthly upkeep and expansion as new documents get added.</p>
-          </div>
-        </details>
+        <a class="pmanual" href="assets/manuals/ragdesk.pdf" target="_blank" rel="noopener">
+          <span class="pmanual-icon">PDF</span>
+          <span lang="es">¿Quieres más información sobre este programa?</span>
+          <span lang="en">Want more information about this program?</span>
+        </a>
       </article>
 
       <article class="pcard">
@@ -561,18 +548,11 @@
         <p class="pdesc" lang="es">Lector de PDF que convierte cada fragmento seleccionado en una ficha de cita clasificada y buscable, con metadatos bibliográficos y salto directo a la página original. Pensado para investigación, revisión documental y trabajo con bibliografía extensa.</p>
         <p class="pdesc" lang="en">PDF reader that turns each selected fragment into a searchable, tagged citation card with bibliographic metadata and a direct link back to the original page. Built for research, document review, and working with large bibliographies.</p>
         <p class="pstack">Tauri · Rust · SQLite (FTS5)</p>
-        <details class="pmore">
-          <summary lang="es">¿Qué hace y qué servicios puedo ofrecerte con esto?</summary>
-          <summary lang="en">What does it do &amp; what services can I offer with it?</summary>
-          <div class="pmore-body" lang="es">
-            <p><strong>Qué hace</strong> — Al leer un PDF, seleccionar un fragmento lo convierte al instante en una ficha con autor, obra, año, tipo de fuente y salto directo a esa página; las fichas se buscan por texto o por significado y se exportan a bibliografía (APA, BibTeX, CSL-JSON).</p>
-            <p><strong>Para quién es útil</strong> — Investigadores y despachos que manejan bibliografía extensa (académica o normativa/legal) y necesitan encontrar de nuevo, meses después, "esa cita" sin releer el documento entero.</p>
-          </div>
-          <div class="pmore-body" lang="en">
-            <p><strong>What it does</strong> — While reading a PDF, selecting a passage instantly turns it into a card with author, work, year, source type and a direct link back to that page; cards are searchable by text or by meaning and export to a bibliography (APA, BibTeX, CSL-JSON).</p>
-            <p><strong>Who it's for</strong> — Researchers and firms working with large bibliographies (academic or legal/regulatory) who need to find "that one citation" again months later, without rereading the whole document.</p>
-          </div>
-        </details>
+        <a class="pmanual" href="assets/manuals/neualz.pdf" target="_blank" rel="noopener">
+          <span class="pmanual-icon">PDF</span>
+          <span lang="es">¿Quieres más información sobre este programa?</span>
+          <span lang="en">Want more information about this program?</span>
+        </a>
       </article>
 
       <article class="pcard">
@@ -589,18 +569,11 @@
           <a href="assets/projects/alzolab-analizar.png" target="_blank" rel="noopener"><img src="assets/projects/alzolab-analizar.png" alt="AlzoLab — análisis con spaCy" loading="lazy"></a>
           <a href="assets/projects/alzolab-concordancia.png" target="_blank" rel="noopener"><img src="assets/projects/alzolab-concordancia.png" alt="AlzoLab — concordancias KWIC" loading="lazy"></a>
         </div>
-        <details class="pmore">
-          <summary lang="es">¿Qué hace y qué servicios puedo ofrecerte con esto?</summary>
-          <summary lang="en">What does it do &amp; what services can I offer with it?</summary>
-          <div class="pmore-body" lang="es">
-            <p><strong>Qué hace</strong> — Convierte un conjunto de textos en un corpus analizable sin escribir código: los limpia, los analiza morfosintácticamente y extrae los términos más relevantes automáticamente (en vez de a mano), con concordancias para ver cada término en su contexto real de uso.</p>
-            <p><strong>Servicios que puedo ofrecer con esto</strong> — Extracción de terminología especializada de un fondo documental (técnico, jurídico, médico) como base para un glosario o una memoria de traducción; análisis de corpus a medida para traductores, editoriales o equipos de contenido.</p>
-          </div>
-          <div class="pmore-body" lang="en">
-            <p><strong>What it does</strong> — Turns a set of texts into an analyzable corpus with no coding required: cleans it, runs morphosyntactic analysis, and extracts the most relevant terms automatically (instead of by hand), with concordances to see each term in its real context of use.</p>
-            <p><strong>Services I can offer with this</strong> — Extracting specialized terminology from a document set (technical, legal, medical) as the basis for a glossary or translation memory; custom corpus analysis for translators, publishers or content teams.</p>
-          </div>
-        </details>
+        <a class="pmanual" href="assets/manuals/alzolab.pdf" target="_blank" rel="noopener">
+          <span class="pmanual-icon">PDF</span>
+          <span lang="es">¿Quieres más información sobre este programa?</span>
+          <span lang="en">Want more information about this program?</span>
+        </a>
       </article>
 
       <article class="pcard">
@@ -617,18 +590,11 @@
           <a href="assets/projects/neupaterm-ficha.png" target="_blank" rel="noopener"><img src="assets/projects/neupaterm-ficha.png" alt="NeupaTerm — ficha terminológica" loading="lazy"></a>
           <a href="assets/projects/neupaterm-connect.png" target="_blank" rel="noopener"><img src="assets/projects/neupaterm-connect.png" alt="NeupaTerm Connect — acceso por API" loading="lazy"></a>
         </div>
-        <details class="pmore">
-          <summary lang="es">¿Qué hace y qué servicios puedo ofrecerte con esto?</summary>
-          <summary lang="en">What does it do &amp; what services can I offer with it?</summary>
-          <div class="pmore-body" lang="es">
-            <p><strong>Qué hace</strong> — Centraliza la terminología de un equipo o proyecto en fichas bilingües estructuradas (no una hoja de cálculo), y la pone disponible desde Word, Trados o memoQ mientras se traduce, en vez de tener que salir a buscarla aparte.</p>
-            <p><strong>Servicios que puedo ofrecer con esto</strong> — Confección y mantenimiento de un glosario terminológico multilingüe para una empresa o equipo de traducción; integración de ese glosario en las herramientas que ya usan a diario.</p>
-          </div>
-          <div class="pmore-body" lang="en">
-            <p><strong>What it does</strong> — Centralizes a team's or project's terminology into structured bilingual records (not a spreadsheet), and makes it available from Word, Trados or memoQ while translating, instead of having to look it up separately.</p>
-            <p><strong>Services I can offer with this</strong> — Building and maintaining a multilingual terminology glossary for a company or translation team; integrating that glossary into the tools they already use day to day.</p>
-          </div>
-        </details>
+        <a class="pmanual" href="assets/manuals/neupaterm.pdf" target="_blank" rel="noopener">
+          <span class="pmanual-icon">PDF</span>
+          <span lang="es">¿Quieres más información sobre este programa?</span>
+          <span lang="en">Want more information about this program?</span>
+        </a>
       </article>
 
       <article class="pcard">
@@ -639,18 +605,11 @@
         <p class="pdesc" lang="es">Plataforma para la documentación de lenguas minoritarias y en peligro. Interoperabilidad FLEx/ELAN/CLDF, glosa interlineal Leipzig, consentimiento informado (CARE/FAIR) y editor offline.</p>
         <p class="pdesc" lang="en">Platform for documenting minority and endangered languages. FLEx/ELAN/CLDF interoperability, Leipzig interlinear glossing, informed consent (CARE/FAIR) and offline editor.</p>
         <p class="pstack">FastAPI · React · Tauri</p>
-        <details class="pmore">
-          <summary lang="es">¿Qué hace y qué servicios puedo ofrecerte con esto?</summary>
-          <summary lang="en">What does it do &amp; what services can I offer with it?</summary>
-          <div class="pmore-body" lang="es">
-            <p><strong>Qué hace</strong> — Da soporte a la documentación de lenguas en riesgo de desaparición: importa datos desde herramientas ya usadas por lingüistas de campo (FLEx, ELAN), aplica el estándar de glosa interlineal de Leipzig y deja constancia del consentimiento informado de cada hablante, con un editor que funciona sin conexión.</p>
-            <p><strong>Para quién es útil</strong> — Equipos de documentación lingüística y proyectos de investigación sobre lenguas minoritarias que necesitan trabajar con datos de campo de forma rigurosa y ética.</p>
-          </div>
-          <div class="pmore-body" lang="en">
-            <p><strong>What it does</strong> — Supports documentation of endangered languages: imports data from tools field linguists already use (FLEx, ELAN), applies the Leipzig interlinear-glossing standard, and records each speaker's informed consent, with an offline-capable editor.</p>
-            <p><strong>Who it's for</strong> — Language-documentation teams and research projects on minority languages that need to work with field data rigorously and ethically.</p>
-          </div>
-        </details>
+        <a class="pmanual" href="assets/manuals/neupalang.pdf" target="_blank" rel="noopener">
+          <span class="pmanual-icon">PDF</span>
+          <span lang="es">¿Quieres más información sobre este programa?</span>
+          <span lang="en">Want more information about this program?</span>
+        </a>
       </article>
 
     </div>
