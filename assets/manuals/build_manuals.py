@@ -80,7 +80,7 @@ PAGE = """<!doctype html>
   <h2>{services_heading}</h2>
   <div class="services"><ul>{services}</ul></div>
 
-  <footer><span>neupavertjm.github.io</span><span>neupavertjm@gmail.com</span></footer>
+  <footer><span>www.neupavert.com</span><span>juanmanuel@neupavert.com</span></footer>
 </body>
 </html>
 """
