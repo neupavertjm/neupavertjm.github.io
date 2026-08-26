@@ -179,6 +179,32 @@ PROJECTS.append(build(
 ))
 
 PROJECTS.append(build(
+    slug="clientworkspace",
+    title="ClientWorkspace (Puesto de mando documental)",
+    title_html='ClientWorkspace <span style="color:#6b7280; font-weight:400;">(Puesto de mando documental)</span>',
+    subtitle="Orquesta el OCR y RagDesk en un único flujo por cliente y proyecto, sin mezclar nunca sus documentos",
+    badge="Prototipo",
+    stack="FastAPI · React/Vite · SQLite (FTS5) · orquesta procesos existentes",
+    que_hace_paragraphs=[
+        "Organiza el trabajo documental de varios clientes a la vez sin que sus archivos, bases de datos o índices se mezclen nunca entre sí: cada cliente y cada proyecto tiene su propia carpeta aislada, con su propia base de datos SQLite.",
+        "Al importar documentos calcula el hash de cada archivo para detectar duplicados exactos antes de procesarlos dos veces, y deja los originales intactos — todo el procesamiento posterior trabaja sobre copias.",
+        "El OCR y la extracción de metadatos (fechas, referencias, con un nivel de confianza explícito) se ejecutan como trabajos en segundo plano con seguimiento de progreso, y cada documento procesado queda automáticamente indexado para búsqueda de texto completo.",
+        "Para consulta documental privada, puede dar de alta una instancia de RagDesk propia y aislada para cada cliente — el índice de cada proyecto vive dentro de su propia carpeta, nunca compartido entre clientes.",
+    ],
+    images=[
+        ("clientworkspace-clientes.png", "Panel de clientes", "Clientes", "cada cliente con sus proyectos, sin mezclar datos entre ellos."),
+        ("clientworkspace-proyecto.png", "Inventario de un proyecto", "Inventario", "estado de OCR, duplicados detectados e instancia RagDesk del cliente."),
+        ("clientworkspace-busqueda.png", "Búsqueda de texto completo", "Búsqueda", "resultados con el fragmento resaltado dentro del documento."),
+        ("clientworkspace-foco.png", "Modo de sesión enfocada", "Modo foco", "tarea actual, pendientes de revisión y cronómetro de la sesión."),
+    ],
+    cols=2,
+    services=[
+        "<strong>Puesto de mando para gestionar varios clientes de digitalización o consulta documental a la vez</strong>, sin depender de carpetas sueltas ni scripts manuales.",
+        "<strong>Aislamiento garantizado entre clientes</strong>: útil cuando la confidencialidad entre expedientes o cuentas es un requisito, no solo una preferencia.",
+    ],
+))
+
+PROJECTS.append(build(
     slug="neualz",
     title="NeuAlz (Lector de PDF y base de conocimiento)",
     title_html='NeuAlz <span style="color:#6b7280; font-weight:400;">(Lector de PDF y base de conocimiento)</span>',
