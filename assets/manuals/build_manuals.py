@@ -15,54 +15,72 @@ TEMPLATES.mkdir(exist_ok=True)
 STYLE = """
   @page { size: A4; margin: 20mm 18mm; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Georgia, 'Times New Roman', serif; color: #1a1a2e; line-height: 1.55; font-size: 11.5pt; }
-  header { border-bottom: 3px solid #2563eb; padding-bottom: 10px; margin-bottom: 4px; break-inside: avoid; page-break-inside: avoid; }
+  :root {
+    --ink: #1b1c1f; --body: #2c2d2e; --muted: #52534f; --dim: #86877f;
+    --accent: #8a5c0e; --accent-ink: #fbf7ee; --accent2: #1c6f66;
+    --bg: #f5f4ef; --rule: #dedcd4; --status-border: #e3d6bb;
+  }
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    color: var(--body); line-height: 1.55; font-size: 10.5pt; background: #ffffff;
+  }
+  header { border-bottom: 2px solid var(--rule); padding-bottom: 12px; margin-bottom: 6px; break-inside: avoid; page-break-inside: avoid; }
   header .name {
-    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
-    font-size: 9pt; color: #6b7280; letter-spacing: 0.04em; text-transform: uppercase;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 8.5pt; color: var(--accent2); letter-spacing: 0.04em; text-transform: lowercase;
   }
-  h1 { font-size: 22pt; margin-top: 4px; }
-  .subtitle { color: #6b7280; font-size: 12pt; margin-top: 2px; }
+  header .name::before { content: '// '; color: var(--dim); }
+  h1 {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 21pt; font-weight: 600; color: var(--ink); margin-top: 6px; letter-spacing: -0.01em;
+  }
+  .subtitle { color: var(--muted); font-size: 11pt; margin-top: 4px; }
   .badge {
-    display: inline-block; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
-    font-size: 8pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-    padding: 2px 9px; border-radius: 999px; border: 1px solid #d1d5db; color: #6b7280; margin-top: 6px;
+    display: inline-block; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 7.5pt; font-weight: 700; text-transform: lowercase; letter-spacing: 0.03em;
+    padding: 3px 10px; border-radius: 3px; border: 1px solid var(--status-border); color: var(--accent); margin-top: 8px;
   }
-  .stack { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; font-size: 9pt; color: #6b7280; margin-top: 8px; }
+  .stack { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 8.5pt; color: var(--accent2); margin-top: 10px; }
   h2 {
-    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
-    font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-    color: #2563eb; margin-top: 22px; margin-bottom: 8px;
-    border-bottom: 1px solid #d1d5db; padding-bottom: 4px;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 9pt; font-weight: 600; text-transform: lowercase; letter-spacing: 0.05em;
+    color: var(--accent2); margin-top: 22px; margin-bottom: 9px;
   }
+  h2::before { content: '// '; color: var(--dim); }
   p { margin-bottom: 8px; }
   ul { margin: 6px 0 10px 20px; }
   li { margin-bottom: 4px; }
   .flow { display: grid; gap: 10px; margin-top: 6px; }
-  .flow figure { border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden; break-inside: avoid; page-break-inside: avoid; }
+  .flow figure { border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; break-inside: avoid; page-break-inside: avoid; }
   .flow img { width: 100%; display: block; }
   .flow figcaption {
-    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
-    font-size: 8pt; color: #6b7280; padding: 5px 8px; border-top: 1px solid #d1d5db; background: #fafafa;
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--muted); padding: 5px 8px; border-top: 1px solid var(--rule); background: var(--bg);
   }
-  .flow figcaption strong { color: #1a1a2e; }
+  .flow figcaption strong { color: var(--ink); }
   .services {
-    background: #f5f7fa; border-left: 3px solid #e8640a; padding: 10px 14px; border-radius: 0 6px 6px 0;
+    background: var(--bg); border-left: 3px solid var(--accent2); padding: 10px 14px; border-radius: 0 6px 6px 0;
     break-inside: avoid; page-break-inside: avoid;
   }
-  .services li::marker { color: #e8640a; }
-  .noshots { font-style: italic; color: #6b7280; font-size: 10pt; margin-top: 4px; }
+  .services li::marker { color: var(--accent2); }
+  .noshots { font-style: italic; color: var(--muted); font-size: 9.5pt; margin-top: 4px; }
   footer {
-    margin-top: 26px; padding-top: 10px; border-top: 1px solid #d1d5db;
-    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
-    font-size: 8.5pt; color: #6b7280; display: flex; justify-content: space-between;
+    margin-top: 26px; padding-top: 10px; border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 8pt; color: var(--dim); display: flex; justify-content: space-between;
     break-inside: avoid; page-break-inside: avoid;
   }
 """
 
 PAGE = """<!doctype html>
 <html lang="es">
-<head><meta charset="utf-8"><title>{title}</title><style>{style}</style></head>
+<head>
+<meta charset="utf-8"><title>{title}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>{style}</style>
+</head>
 <body>
   <header>
     <div class="name">Juan Manuel Neupavert Alzola</div>

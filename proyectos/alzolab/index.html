@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>AlzoLab — Juan Manuel Neupavert Alzola</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Laboratorio de lingüística de corpus en el navegador, sin escribir código. Flujo completo: importación multifuente → limpieza y normalización → análisis morfosintáctico con spaCy → extracción terminológica (C-value) → concordancias KWIC → exportación.">
+<link rel="canonical" href="https://www.neupavert.com/proyectos/alzolab/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Juan Manuel Neupavert Alzola">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Juan Manuel Neupavert Alzola">
+<meta property="og:title" content="AlzoLab — Juan Manuel Neupavert Alzola">
+<meta property="og:description" content="Laboratorio de lingüística de corpus en el navegador, sin escribir código. Flujo completo: importación multifuente → limpieza y normalización → análisis morfosintáctico con spaCy → extracción terminológica (C-value) → concordancias KWIC → exportación.">
+<meta property="og:url" content="https://www.neupavert.com/proyectos/alzolab/">
+<meta property="og:image" content="https://www.neupavert.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AlzoLab — Juan Manuel Neupavert Alzola">
+<meta name="twitter:description" content="Laboratorio de lingüística de corpus en el navegador, sin escribir código. Flujo completo: importación multifuente → limpieza y normalización → análisis morfosintáctico con spaCy → extracción terminológica (C-value) → concordancias KWIC → exportación.">
+<meta name="twitter:image" content="https://www.neupavert.com/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AlzoLab",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "url": "https://www.neupavert.com/proyectos/alzolab/",
+  "description": "Laboratorio de lingüística de corpus en el navegador, sin escribir código. Flujo completo: importación multifuente → limpieza y normalización → análisis morfosintáctico con spaCy → extracción terminológica (C-value) → concordancias KWIC → exportación.",
+  "author": {
+    "@type": "Person",
+    "name": "Juan Manuel Neupavert Alzola",
+    "url": "https://www.neupavert.com/"
+  }
+}
+</script>
+<style>
+  :root {
+    --ink: #1b1c1f; --body: #2c2d2e; --muted: #52534f; --dim: #86877f;
+    --accent: #8a5c0e; --accent-ink: #fbf7ee; --accent-hover: #6b4709; --accent2: #1c6f66;
+    --bg: #f5f4ef; --card-bg: #ffffff; --rule: #dedcd4; --status-border: #e3d6bb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eae7de; --body: #c7c9c2; --muted: #9aa0ad; --dim: #6d7180;
+      --accent: #e8a23c; --accent-ink: #12141c; --accent-hover: #f4b862; --accent2: #4fb3a8;
+      --bg: #12141c; --card-bg: #171a24; --rule: #262a38; --status-border: #3a3320;
+    }
+  }
+  :root[data-theme="dark"] {
+      --ink: #eae7de; --body: #c7c9c2; --muted: #9aa0ad; --dim: #6d7180;
+      --accent: #e8a23c; --accent-ink: #12141c; --accent-hover: #f4b862; --accent2: #4fb3a8;
+      --bg: #12141c; --card-bg: #171a24; --rule: #262a38; --status-border: #3a3320;
+  }
+  :root[data-theme="light"] {
+    --ink: #1b1c1f; --body: #2c2d2e; --muted: #52534f; --dim: #86877f;
+    --accent: #8a5c0e; --accent-ink: #fbf7ee; --accent-hover: #6b4709; --accent2: #1c6f66;
+    --bg: #f5f4ef; --card-bg: #ffffff; --rule: #dedcd4; --status-border: #e3d6bb;
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.0625rem; line-height: 1.7; color: var(--body); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  html:not([data-lang="en"]) [lang="en"] { display: none; }
+  html[data-lang="en"] [lang="es"] { display: none; }
+  .page { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+  .back { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.82rem; color: var(--muted); margin-bottom: 2rem; display: inline-block; }
+  .back:hover { color: var(--accent); }
+  .ptag { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.72rem; color: var(--accent2); margin-bottom: 0.6rem; }
+  .ptag::before { content: '// '; color: var(--dim); }
+  .phead { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .plogo { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid var(--rule); border-radius: 7px; background: var(--card-bg); color: var(--accent2); }
+  .plogo svg { width: 24px; height: 24px; }
+  h1 { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 1.7rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .psub { color: var(--muted); font-size: 1.05rem; margin: 0.9rem 0 1rem; max-width: 620px; }
+  .pmeta-row { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .pmeta { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.7rem; font-weight: 600; text-transform: lowercase; letter-spacing: 0.02em; padding: 0.2rem 0.6rem; border-radius: 3px; border: 1px solid var(--status-border); color: var(--accent); }
+  .pstack { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.82rem; color: var(--accent2); }
+  h2 { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.75rem; font-weight: 600; text-transform: lowercase; letter-spacing: 0.06em; color: var(--accent2); margin: 2.2rem 0 1rem; }
+  h2::before { content: '// '; color: var(--dim); }
+  section p { margin-bottom: 0.9rem; max-width: 640px; }
+  section ul { margin: 0 0 0.9rem 1.1rem; max-width: 640px; }
+  section li { margin-bottom: 0.5rem; }
+  .noshots { font-style: italic; color: var(--muted); font-size: 0.92rem; }
+  .shots { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .shots a { display: block; line-height: 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; transition: border-color 0.15s ease; }
+  .shots a:hover { border-color: var(--accent2); }
+  .shots img { height: 130px; width: auto; display: block; }
+  @media (max-width: 560px) { .shots img { height: 92px; } }
+  .services-note { border-left: 3px solid var(--accent2); padding: 0.1rem 0 0.1rem 0.9rem; max-width: 620px; }
+  .manual-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 0.4rem 1rem 0.4rem 0.65rem; transition: background 0.15s ease, color 0.15s ease; }
+  .manual-btn:hover { background: var(--accent); color: var(--accent-ink); }
+  .manual-btn .mi { display: inline-flex; align-items: center; justify-content: center; width: 1.3rem; height: 1.3rem; border-radius: 3px; background: var(--accent); color: var(--accent-ink); font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; font-weight: 700; }
+  .manual-btn:hover .mi { background: var(--accent-ink); color: var(--accent); }
+  .followup { font-size: 0.92rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 1rem; margin-top: 2rem; max-width: 620px; }
+  .foot { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
+  .demo-link { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; }
+  .demo-link::after { content: '\2192'; }
+  .lang-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 10; display: flex; font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; background: var(--bg); }
+  .lang-toggle button { font: inherit; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.3rem 0.62rem; border: none; background: transparent; color: var(--muted); cursor: pointer; }
+  .lang-toggle button + button { border-left: 1px solid var(--rule); }
+  .lang-toggle button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<script>try{if(localStorage.getItem('lang')==='en')document.documentElement.setAttribute('data-lang','en');}catch(e){}</script>
+</head>
+<body>
+
+<div class="lang-toggle" role="group" aria-label="Language / Idioma">
+  <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+  <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+</div>
+
+<main class="page">
+  <a class="back" href="/#proyectos" lang="es">&larr; neupavert.com</a>
+  <a class="back" href="/#proyectos" lang="en">&larr; neupavert.com</a>
+
+  <p class="ptag" lang="es">caso de estudio</p>
+  <p class="ptag" lang="en">case study</p>
+
+  <div class="phead">
+    <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4"/><path d="M10.5 3v5.5L5.8 17a1.6 1.6 0 0 0 1.4 2.4h9.6a1.6 1.6 0 0 0 1.4-2.4L13.5 8.5V3"/><line x1="8.3" y1="14" x2="15.7" y2="14"/></svg></span>
+    <h1>AlzoLab <span style="font-weight:400;color:var(--muted);font-size:0.75em;" lang="es"></span><span style="font-weight:400;color:var(--muted);font-size:0.75em;" lang="en"></span></h1>
+  </div>
+
+  <p class="psub" lang="es">Laboratorio de lingüística de corpus en el navegador, sin escribir código. Flujo completo: importación multifuente → limpieza y normalización → análisis morfosintáctico con spaCy → extracción terminológica (C-value) → concordancias KWIC → exportación.</p>
+  <p class="psub" lang="en">Browser-based corpus-linguistics lab, no coding required. End-to-end flow: multi-source import → cleaning and normalization → morphosyntactic analysis with spaCy → term extraction (C-value) → KWIC concordances → export.</p>
+
+  <div class="pmeta-row">
+    <span class="pmeta" lang="es">En producción</span><span class="pmeta" lang="en">In production</span>
+    <span class="pstack">Python · Streamlit · spaCy</span>
+  </div>
+
+  <h2 lang="es">Qué hace</h2><h2 lang="en">What it does</h2>
+  <div lang="es">
+    <p>Convierte un conjunto de textos en un corpus analizable sin escribir una línea de código: importación desde varias fuentes (web, Wikipedia, archivos propios), limpieza y normalización, análisis morfosintáctico con spaCy, extracción automática de términos relevantes (C-value) y concordancias KWIC para ver cada término en su contexto real de uso.</p>
+    <p>Todo el flujo — desde subir los textos hasta exportar los resultados — ocurre dentro de la misma interfaz, pensado para alguien sin experiencia de programación.</p>
+  </div>
+  <div lang="en">
+    <p>It turns a set of texts into an analyzable corpus without writing a line of code: import from several sources (web, Wikipedia, own files), cleaning and normalization, morphosyntactic analysis with spaCy, automatic extraction of relevant terms (C-value), and KWIC concordances to see each term in its real context of use.</p>
+    <p>The whole flow — from uploading the texts to exporting the results — happens inside the same interface, built for someone with no programming experience.</p>
+  </div>
+
+    <h2 lang="es">Cómo se ve en uso</h2>
+    <h2 lang="en">How it looks in use</h2>
+    <div class="shots">
+      <a href="/assets/projects/alzolab-importar.png" target="_blank" rel="noopener"><img src="/assets/projects/thumbs/alzolab-importar.png" alt="AlzoLab — importación" loading="lazy"></a>
+      <a href="/assets/projects/alzolab-limpiar.png" target="_blank" rel="noopener"><img src="/assets/projects/thumbs/alzolab-limpiar.png" alt="AlzoLab — limpieza y normalización" loading="lazy"></a>
+      <a href="/assets/projects/alzolab-analizar.png" target="_blank" rel="noopener"><img src="/assets/projects/thumbs/alzolab-analizar.png" alt="AlzoLab — análisis con spaCy" loading="lazy"></a>
+      <a href="/assets/projects/alzolab-concordancia.png" target="_blank" rel="noopener"><img src="/assets/projects/thumbs/alzolab-concordancia.png" alt="AlzoLab — concordancias KWIC" loading="lazy"></a>
+    </div>
+
+  <h2 lang="es">Servicios relacionados</h2><h2 lang="en">Related services</h2>
+  <div class="services-note">
+    <ul lang="es"><li><strong>Extracción de terminología especializada</strong> de un fondo documental (técnico, jurídico, médico) como base para un glosario o una memoria de traducción.</li>
+      <li><strong>Análisis de corpus a medida</strong> para traductores, editoriales o equipos de contenido que trabajan con grandes volúmenes de texto.</li></ul>
+    <ul lang="en"><li><strong>Extracting specialized terminology</strong> from a document collection (technical, legal, medical) as the basis for a glossary or translation memory.</li>
+      <li><strong>Custom corpus analysis</strong> for translators, publishers or content teams working with large volumes of text.</li></ul>
+  </div>
+
+  <p class="followup" lang="es">Arquitectura detallada, dificultades y aprendizajes concretos: este caso de estudio se ampliará con esos apartados según avance el proyecto — de momento la descripción de arriba es todo lo documentado.</p>
+  <p class="followup" lang="en">Detailed architecture, difficulties and concrete lessons learned: this case study will grow those sections as the project moves forward — for now, the description above is everything that's documented.</p>
+
+  <p style="margin-top:1.6rem;">
+    <a class="manual-btn" href="/assets/manuals/alzolab.pdf" target="_blank" rel="noopener"><span class="mi">PDF</span><span lang="es">Manual completo</span><span lang="en">Full manual</span></a>
+  </p>
+  <p><a class="demo-link" href="https://jmneupavert-alzolab.hf.space/" target="_blank" rel="noopener"><span lang="es">Probar la demo en vivo</span><span lang="en">Try the live demo</span></a></p>
+
+  <p class="foot">
+    <span lang="es">¿Un problema parecido? </span><span lang="en">A similar problem? </span>
+    <a href="mailto:juanmanuel@neupavert.com">juanmanuel@neupavert.com</a>
+  </p>
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    function apply(lang) {
+      root.setAttribute('data-lang', lang);
+      var btns = document.querySelectorAll('.lang-toggle button');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-set-lang') === lang ? 'true' : 'false');
+      }
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    var saved = 'es';
+    try { if (localStorage.getItem('lang') === 'en') saved = 'en'; } catch (e) {}
+    apply(saved);
+    var toggle = document.querySelector('.lang-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-set-lang]');
+        if (b) apply(b.getAttribute('data-set-lang'));
+      });
+    }
+  })();
+</script>
+</body>
+</html>

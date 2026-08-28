@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Demostraciones — Juan Manuel Neupavert Alzola</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tres demostraciones interactivas de procesamiento documental y terminológico: buscador documental, concordancias KWIC y ficha terminológica. Funcionan enteramente en el navegador sobre datos de ejemplo.">
+<link rel="canonical" href="https://www.neupavert.com/demo/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Juan Manuel Neupavert Alzola">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Juan Manuel Neupavert Alzola">
+<meta property="og:title" content="Demostraciones — Juan Manuel Neupavert Alzola">
+<meta property="og:description" content="Buscador documental, concordancias KWIC y ficha terminológica: tres demostraciones interactivas sobre datos de ejemplo.">
+<meta property="og:url" content="https://www.neupavert.com/demo/">
+<meta property="og:image" content="https://www.neupavert.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Demostraciones — Juan Manuel Neupavert Alzola">
+<meta name="twitter:image" content="https://www.neupavert.com/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1b1c1f; --body: #2c2d2e; --muted: #52534f; --dim: #86877f;
+    --accent: #8a5c0e; --accent-ink: #fbf7ee; --accent-hover: #6b4709; --accent2: #1c6f66;
+    --bg: #f5f4ef; --card-bg: #ffffff; --rule: #dedcd4; --status-border: #e3d6bb;
+    --mark: #f6e3b8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eae7de; --body: #c7c9c2; --muted: #9aa0ad; --dim: #6d7180;
+      --accent: #e8a23c; --accent-ink: #12141c; --accent-hover: #f4b862; --accent2: #4fb3a8;
+      --bg: #12141c; --card-bg: #171a24; --rule: #262a38; --status-border: #3a3320;
+      --mark: #4a3a17;
+    }
+  }
+  :root[data-theme="dark"] {
+      --ink: #eae7de; --body: #c7c9c2; --muted: #9aa0ad; --dim: #6d7180;
+      --accent: #e8a23c; --accent-ink: #12141c; --accent-hover: #f4b862; --accent2: #4fb3a8;
+      --bg: #12141c; --card-bg: #171a24; --rule: #262a38; --status-border: #3a3320;
+      --mark: #4a3a17;
+  }
+  :root[data-theme="light"] {
+    --ink: #1b1c1f; --body: #2c2d2e; --muted: #52534f; --dim: #86877f;
+    --accent: #8a5c0e; --accent-ink: #fbf7ee; --accent-hover: #6b4709; --accent2: #1c6f66;
+    --bg: #f5f4ef; --card-bg: #ffffff; --rule: #dedcd4; --status-border: #e3d6bb;
+    --mark: #f6e3b8;
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.0625rem; line-height: 1.65; color: var(--body); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-hover); }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  html:not([data-lang="en"]) [lang="en"] { display: none; }
+  html[data-lang="en"] [lang="es"] { display: none; }
+  .page { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+  .back { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.82rem; color: var(--muted); text-decoration: none; margin-bottom: 2rem; display: inline-block; }
+  .back:hover { color: var(--accent); }
+  .ptag { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.72rem; color: var(--accent2); margin-bottom: 0.6rem; }
+  .ptag::before { content: '// '; color: var(--dim); }
+  h1 { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 1.8rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .lede { max-width: 640px; color: var(--body); margin-bottom: 2rem; }
+  .demo-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);
+    border: 1px solid var(--status-border); border-radius: 3px; padding: 0.25rem 0.6rem;
+    margin-bottom: 1.1rem;
+  }
+  .demo-badge::before { content: '\25CF'; font-size: 0.55rem; }
+
+  .tabs { display: flex; gap: 0.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.8rem; flex-wrap: wrap; }
+  .tab-btn {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 0.82rem; font-weight: 600;
+    color: var(--muted); background: none; border: none; padding: 0.7rem 0.3rem; margin-right: 1.3rem;
+    cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .demo-input {
+    width: 100%; max-width: 460px; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem;
+    padding: 0.6rem 0.9rem; border: 1px solid var(--rule); border-radius: 5px;
+    background: var(--card-bg); color: var(--ink); margin-bottom: 1.3rem;
+  }
+  .demo-hint { font-size: 0.8rem; color: var(--dim); margin: -0.9rem 0 1.3rem; }
+
+  .result-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .result-card { border: 1px solid var(--rule); border-radius: 6px; padding: 0.9rem 1.1rem; background: var(--card-bg); }
+  .result-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+  .result-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--accent2); }
+  .result-snippet { font-size: 0.9rem; color: var(--muted); margin-top: 0.4rem; }
+  .result-snippet mark { background: var(--mark); color: var(--ink); border-radius: 2px; padding: 0 0.1rem; }
+  .empty-state { color: var(--dim); font-size: 0.9rem; font-style: italic; }
+
+  .kwic-table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; }
+  .kwic-table td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+  .kwic-left { text-align: right; color: var(--muted); white-space: nowrap; overflow: hidden; max-width: 260px; }
+  .kwic-mid { text-align: center; font-weight: 700; color: var(--accent-ink); background: var(--accent); border-radius: 3px; white-space: nowrap; }
+  .kwic-right { text-align: left; color: var(--muted); white-space: nowrap; overflow: hidden; max-width: 260px; }
+  .kwic-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; }
+  .kwic-empty { font-family: 'IBM Plex Sans', sans-serif; }
+
+  .term-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.6rem; }
+  .term-chip {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 600;
+    border: 1px solid var(--rule); background: var(--card-bg); color: var(--ink);
+    border-radius: 5px; padding: 0.45rem 0.9rem; cursor: pointer;
+  }
+  .term-chip:hover { border-color: var(--accent2); }
+  .term-chip.active { background: var(--accent2); color: var(--accent-ink); border-color: var(--accent2); }
+  .term-card { border: 1px solid var(--rule); border-radius: 6px; padding: 1.2rem 1.3rem; background: var(--card-bg); max-width: 560px; }
+  .term-card h3 { font-family: 'IBM Plex Mono', monospace; font-size: 1.2rem; color: var(--ink); margin-bottom: 0.6rem; }
+  .term-card .term-def { margin-bottom: 0.8rem; }
+  .term-card .term-ctx { font-size: 0.9rem; color: var(--muted); font-style: italic; border-left: 3px solid var(--accent2); padding-left: 0.8rem; margin-bottom: 0.9rem; }
+  .term-related { font-size: 0.78rem; color: var(--dim); font-family: 'IBM Plex Mono', monospace; text-transform: lowercase; margin-bottom: 0.5rem; }
+  .term-related-chip { color: var(--accent2); cursor: pointer; font-weight: 600; }
+  .term-related-chip:hover { color: var(--accent); }
+
+  .foot { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
+  .lang-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 10; display: flex; font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; background: var(--bg); }
+  .lang-toggle button { font: inherit; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.3rem 0.62rem; border: none; background: transparent; color: var(--muted); cursor: pointer; }
+  .lang-toggle button + button { border-left: 1px solid var(--rule); }
+  .lang-toggle button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<script>try{if(localStorage.getItem('lang')==='en')document.documentElement.setAttribute('data-lang','en');}catch(e){}</script>
+</head>
+<body>
+
+<div class="lang-toggle" role="group" aria-label="Language / Idioma">
+  <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+  <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+</div>
+
+<main class="page">
+  <a class="back" href="/#servicios" lang="es">&larr; neupavert.com</a>
+  <a class="back" href="/#servicios" lang="en">&larr; neupavert.com</a>
+
+  <p class="ptag" lang="es">demostraciones</p>
+  <p class="ptag" lang="en">demos</p>
+  <h1 lang="es">Cómo se ven estos servicios en la práctica</h1>
+  <h1 lang="en">What these services look like in practice</h1>
+  <p class="lede" lang="es">Tres demostraciones interactivas que funcionan enteramente en tu navegador, sobre un pequeño conjunto de datos de ejemplo fabricado para esta página — no hay ningún backend detrás ni documentos reales de ningún cliente. El objetivo es que puedas experimentar el tipo de interacción, no ver una simulación de resultado ya escrito.</p>
+  <p class="lede" lang="en">Three interactive demos that run entirely in your browser, over a small set of example data built for this page — there's no backend behind them and no real client documents. The goal is to let you try the actual interaction, not watch a canned result.</p>
+
+  <div class="tabs" role="tablist" aria-label="Demostraciones">
+    <button class="tab-btn" role="tab" aria-selected="true" data-tab="search" lang="es">Buscador documental</button>
+    <button class="tab-btn" role="tab" aria-selected="true" data-tab="search" lang="en">Document search</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="kwic" lang="es">Concordancias KWIC</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="kwic" lang="en">KWIC concordances</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="terms" lang="es">Ficha terminológica</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="terms" lang="en">Term records</button>
+  </div>
+
+  <!-- ================= PANEL 1: document search ================= -->
+  <section id="panel-search" class="panel active">
+    <p class="demo-badge" lang="es">demostración — 6 documentos de ejemplo</p>
+    <p class="demo-badge" lang="en">demo — 6 example documents</p>
+    <input type="text" id="search-input" class="demo-input" placeholder="Buscar, p. ej. «digitalización», «datos», «plazo»…" lang="es">
+    <input type="text" id="search-input-en" class="demo-input" placeholder="Search, e.g. &quot;digitization&quot;, &quot;data&quot;, &quot;deadline&quot;…" lang="en">
+    <p class="demo-hint" lang="es">Escribe una palabra: la búsqueda ocurre al instante, en tu navegador, sobre el texto de estos 6 documentos de ejemplo.</p>
+    <p class="demo-hint" lang="en">Type a word: the search happens instantly, in your browser, over the text of these 6 example documents.</p>
+    <div id="search-results" class="result-list"></div>
+  </section>
+
+  <!-- ================= PANEL 2: KWIC ================= -->
+  <section id="panel-kwic" class="panel">
+    <p class="demo-badge" lang="es">demostración — corpus de ejemplo de 10 frases</p>
+    <p class="demo-badge" lang="en">demo — 10-sentence example corpus</p>
+    <input type="text" id="kwic-input" class="demo-input" placeholder="Término, p. ej. «corpus», «terminológica», «digitalización»…" lang="es">
+    <input type="text" id="kwic-input-en" class="demo-input" placeholder="Term, e.g. &quot;corpus&quot;, &quot;terminology&quot;, &quot;digitization&quot;…" lang="en">
+    <p class="demo-hint" lang="es">Cada línea muestra el término centrado, con su contexto izquierdo y derecho alineados — así se lee una concordancia KWIC.</p>
+    <p class="demo-hint" lang="en">Each line centers the term, with left and right context aligned — this is how a KWIC concordance is read.</p>
+    <div class="kwic-wrap">
+      <table class="kwic-table" id="kwic-table"></table>
+    </div>
+  </section>
+
+  <!-- ================= PANEL 3: terminology ================= -->
+  <section id="panel-terms" class="panel">
+    <p class="demo-badge" lang="es">demostración — glosario de ejemplo de 6 términos</p>
+    <p class="demo-badge" lang="en">demo — 6-term example glossary</p>
+    <div class="term-grid" id="term-grid"></div>
+    <div id="term-detail"></div>
+  </section>
+
+  <p class="foot" lang="es">¿Quieres ver esto funcionando sobre tu propio archivo? <a href="mailto:juanmanuel@neupavert.com">Hablemos</a>.</p>
+  <p class="foot" lang="en">Want to see this working on your own archive? <a href="mailto:juanmanuel@neupavert.com">Let's talk</a>.</p>
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    function apply(lang) {
+      root.setAttribute('data-lang', lang);
+      var btns = document.querySelectorAll('.lang-toggle button');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-set-lang') === lang ? 'true' : 'false');
+      }
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    var saved = 'es';
+    try { if (localStorage.getItem('lang') === 'en') saved = 'en'; } catch (e) {}
+    apply(saved);
+    var toggle = document.querySelector('.lang-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-set-lang]');
+        if (b) apply(b.getAttribute('data-set-lang'));
+      });
+    }
+  })();
+
+  // ---- tabs ----
+  (function () {
+    var buttons = document.querySelectorAll('.tab-btn');
+    var panels = { search: document.getElementById('panel-search'), kwic: document.getElementById('panel-kwic'), terms: document.getElementById('panel-terms') };
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-tab');
+        buttons.forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-tab') === key ? 'true' : 'false'); });
+        Object.keys(panels).forEach(function (k) { panels[k].classList.toggle('active', k === key); });
+      });
+    });
+  })();
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  }
+
+  // ================= 1. Document search =================
+  var DOCS = [
+    { title: 'Manual_Procedimientos_Internos.pdf', tag: 'documentación técnica', text: 'Este manual describe el procedimiento de aprobación de gastos, los plazos de revisión y las personas responsables de cada fase del proceso.' },
+    { title: 'Contrato_Marco_Proveedores.docx', tag: 'legal', text: 'El presente contrato marco regula las condiciones generales de suministro entre las partes, incluyendo plazos de entrega, penalizaciones por incumplimiento y condiciones de pago.' },
+    { title: 'Acta_Reunion_Directiva_2024.pdf', tag: 'actas', text: 'Se acuerda por unanimidad aprobar el presupuesto del próximo trimestre e iniciar el proceso de digitalización del archivo histórico de la empresa.' },
+    { title: 'Informe_Auditoria_Interna.pdf', tag: 'informes', text: 'La auditoría interna detectó inconsistencias en el archivo de facturas anteriores a 2020, conservadas hasta ahora únicamente en papel.' },
+    { title: 'Normativa_Proteccion_Datos.pdf', tag: 'normativa', text: 'Todo tratamiento de datos personales debe registrarse conforme al reglamento vigente, incluyendo la base legal y el plazo de conservación de cada documento.' },
+    { title: 'Manual_Usuario_Sistema_XYZ.pdf', tag: 'documentación técnica', text: 'El sistema permite exportar los registros en formato CSV o JSON, y admite la búsqueda por rango de fechas y por tipo de documento.' }
+  ];
+
+  function highlight(text, q) {
+    var i = text.toLowerCase().indexOf(q.toLowerCase());
+    if (i === -1) return escapeHtml(text);
+    return escapeHtml(text.slice(0, i)) + '<mark>' + escapeHtml(text.slice(i, i + q.length)) + '</mark>' + escapeHtml(text.slice(i + q.length));
+  }
+
+  function renderSearch(q) {
+    var out = document.getElementById('search-results');
+    q = q.trim();
+    if (!q) {
+      out.innerHTML = '<p class="empty-state" lang="es">Escribe algo arriba para buscar en los documentos de ejemplo.</p><p class="empty-state" lang="en">Type something above to search the example documents.</p>';
+      applyLangVisibility(out);
+      return;
+    }
+    var matches = DOCS.filter(function (d) { return d.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 || d.text.toLowerCase().indexOf(q.toLowerCase()) !== -1; });
+    if (!matches.length) {
+      out.innerHTML = '<p class="empty-state" lang="es">Sin resultados para «' + escapeHtml(q) + '» en estos documentos de ejemplo.</p><p class="empty-state" lang="en">No results for &quot;' + escapeHtml(q) + '&quot; in these example documents.</p>';
+      applyLangVisibility(out);
+      return;
+    }
+    out.innerHTML = matches.map(function (d) {
+      return '<div class="result-card"><div class="result-title">' + escapeHtml(d.title) + '</div><span class="result-tag">[' + escapeHtml(d.tag) + ']</span><div class="result-snippet">' + highlight(d.text, q) + '</div></div>';
+    }).join('');
+  }
+  function applyLangVisibility(container) {
+    // ensure freshly-injected [lang] nodes respect the current toggle state
+    var lang = document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'es';
+    container.querySelectorAll('[lang]').forEach(function (el) {
+      el.style.display = el.getAttribute('lang') === lang ? '' : 'none';
+    });
+  }
+
+  var searchEs = document.getElementById('search-input');
+  var searchEn = document.getElementById('search-input-en');
+  searchEs.addEventListener('input', function () { searchEn.value = searchEs.value; renderSearch(searchEs.value); });
+  searchEn.addEventListener('input', function () { searchEs.value = searchEn.value; renderSearch(searchEn.value); });
+  renderSearch('');
+
+  // ================= 2. KWIC =================
+  var CORPUS = [
+    'La digitalización documental convierte archivos en papel en texto buscable y editable.',
+    'Muchas empresas comienzan su digitalización documental sin una estrategia clara de organización.',
+    'El resultado de una digitalización documental debe revisarse antes de darse por bueno.',
+    'Un corpus bien preparado permite un análisis terminológico mucho más fiable.',
+    'La extracción terminológica sobre un corpus pequeño produce resultados poco representativos.',
+    'Cada concordancia muestra el término en su contexto real de uso dentro del corpus.',
+    'Sin una base terminológica compartida, cada traductor elige equivalencias distintas.',
+    'La base terminológica centraliza las decisiones ya tomadas para todo el equipo.',
+    'Buscar por palabra clave falla en cuanto la respuesta está formulada de otra manera.',
+    'La consulta documental en lenguaje natural evita depender de la palabra clave exacta.'
+  ];
+
+  function renderKwic(q) {
+    var table = document.getElementById('kwic-table');
+    q = q.trim();
+    if (!q) { table.innerHTML = ''; return; }
+    var rows = [];
+    CORPUS.forEach(function (sent) {
+      var idx = sent.toLowerCase().indexOf(q.toLowerCase());
+      if (idx === -1) return;
+      var left = sent.slice(0, idx);
+      var mid = sent.slice(idx, idx + q.length);
+      var right = sent.slice(idx + q.length);
+      rows.push('<tr><td class="kwic-left">' + escapeHtml(left) + '</td><td class="kwic-mid">' + escapeHtml(mid) + '</td><td class="kwic-right">' + escapeHtml(right) + '</td></tr>');
+    });
+    table.innerHTML = rows.length ? rows.join('') : '<tr><td class="empty-state kwic-empty" lang="es">Sin coincidencias en el corpus de ejemplo.</td></tr><tr><td class="empty-state kwic-empty" lang="en">No matches in the example corpus.</td></tr>';
+  }
+  var kwicEs = document.getElementById('kwic-input');
+  var kwicEn = document.getElementById('kwic-input-en');
+  kwicEs.addEventListener('input', function () { kwicEn.value = kwicEs.value; renderKwic(kwicEs.value); });
+  kwicEn.addEventListener('input', function () { kwicEs.value = kwicEn.value; renderKwic(kwicEn.value); });
+
+  // ================= 3. Terminology =================
+  var TERMS = [
+    { term: 'OCR', def: 'Reconocimiento óptico de caracteres: conversión de una imagen de texto en texto digital buscable.', ctx: 'El documento escaneado se procesó con OCR antes de indexarlo.', related: ['Metadato'] },
+    { term: 'RAG', def: 'Retrieval-Augmented Generation: un modelo de lenguaje responde citando fragmentos recuperados de una colección de documentos.', ctx: 'El asistente usa RAG para citar la página exacta de cada respuesta.', related: ['Corpus', 'Metadato'] },
+    { term: 'Corpus', def: 'Conjunto estructurado de textos reunido para su análisis lingüístico o terminológico.', ctx: 'El corpus se limpió y normalizó antes del análisis.', related: ['Concordancia', 'RAG'] },
+    { term: 'Concordancia', def: 'Listado de apariciones de un término junto con su contexto inmediato (KWIC).', ctx: 'La concordancia mostró el término siempre en el mismo tipo de construcción.', related: ['Corpus'] },
+    { term: 'Metadato', def: 'Dato que describe a otro dato: autor, fecha, tipo de fuente, nivel de confianza, etc.', ctx: 'Cada página digitalizada guarda su metadato de origen.', related: ['OCR', 'Glosario'] },
+    { term: 'Glosario', def: 'Lista organizada de términos de un dominio junto con su definición y equivalencias.', ctx: 'El glosario centraliza las decisiones terminológicas del equipo.', related: ['Metadato', 'Concordancia'] }
+  ];
+
+  function selectTerm(name) {
+    var t = TERMS.find(function (x) { return x.term === name; });
+    if (!t) return;
+    document.querySelectorAll('.term-chip').forEach(function (c) { c.classList.toggle('active', c.textContent === t.term); });
+    var relatedHtml = t.related.map(function (r) { return '<span class="term-related-chip" data-term="' + escapeHtml(r) + '">' + escapeHtml(r) + '</span>'; }).join(' &middot; ');
+    document.getElementById('term-detail').innerHTML =
+      '<div class="term-card"><h3>' + escapeHtml(t.term) + '</h3>' +
+      '<p class="term-def">' + escapeHtml(t.def) + '</p>' +
+      '<p class="term-ctx">&ldquo;' + escapeHtml(t.ctx) + '&rdquo;</p>' +
+      '<p class="term-related" lang="es">relacionado: ' + relatedHtml + '</p>' +
+      '<p class="term-related" lang="en">related: ' + relatedHtml + '</p></div>';
+    document.querySelectorAll('.term-related-chip').forEach(function (c) {
+      c.addEventListener('click', function () { selectTerm(c.getAttribute('data-term')); });
+    });
+    applyLangVisibility(document.getElementById('term-detail'));
+  }
+
+  var grid = document.getElementById('term-grid');
+  grid.innerHTML = TERMS.map(function (t) { return '<button type="button" class="term-chip">' + escapeHtml(t.term) + '</button>'; }).join('');
+  grid.querySelectorAll('.term-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () { selectTerm(chip.textContent); });
+  });
+  selectTerm('OCR');
+</script>
+</body>
+</html>
