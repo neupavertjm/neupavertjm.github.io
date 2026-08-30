@@ -114,6 +114,14 @@
   .foot { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
   .demo-link { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; }
   .demo-link::after { content: '\2192'; }
+  .demo-hero {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.95rem; font-weight: 700; color: var(--accent-ink);
+    background: var(--accent2); border-radius: 5px; padding: 0.6rem 1.2rem;
+    margin-bottom: 1.6rem;
+  }
+  .demo-hero:hover { opacity: 0.85; color: var(--accent-ink); }
+  .demo-hero::after { content: '\2192'; margin-left: 0.1rem; }
   .lang-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 10; display: flex; font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; background: var(--bg); }
   .lang-toggle button { font: inherit; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.3rem 0.62rem; border: none; background: transparent; color: var(--muted); cursor: pointer; }
   .lang-toggle button + button { border-left: 1px solid var(--rule); }
@@ -149,6 +157,8 @@
     <span class="pstack">React/Vite · FastAPI · PostgreSQL · spaCy</span>
   </div>
 
+  <p><a class="demo-hero" href="https://www.neupaterm.com" target="_blank" rel="noopener"><span lang="es">Ver la plataforma</span><span lang="en">View the platform</span></a></p>
+
   <h2 lang="es">Qué hace</h2><h2 lang="en">What it does</h2>
   <div lang="es">
     <p>Centraliza la terminología de un equipo o proyecto en fichas bilingües estructuradas — no una hoja de cálculo — con categoría gramatical, contextos de uso y equivalencias por idioma, por pares de idiomas (ES · EN · PT · DE · IT · FR).</p>
@@ -170,10 +180,12 @@
 
   <h2 lang="es">Servicios relacionados</h2><h2 lang="en">Related services</h2>
   <div class="services-note">
-    <ul lang="es"><li><strong>Confección y mantenimiento de un glosario terminológico multilingüe</strong> para una empresa o equipo de traducción.</li>
-      <li><strong>Integración de ese glosario en las herramientas que ya se usan a diario</strong> (Word, Trados, memoQ) vía NeupaTerm Connect.</li></ul>
-    <ul lang="en"><li><strong>Building and maintaining a multilingual terminology glossary</strong> for a company or translation team.</li>
-      <li><strong>Integrating that glossary into the tools already used day to day</strong> (Word, Trados, memoQ) via NeupaTerm Connect.</li></ul>
+    <ul lang="es"><li><strong>Confección y mantenimiento de un glosario terminológico multilingüe</strong> para una empresa o equipo de traducción, con fichas por par de idioma en vez de una hoja de cálculo compartida.</li>
+      <li><strong>Integración de ese glosario en las herramientas que ya se usan a diario</strong> (Word, Trados, memoQ) vía NeupaTerm Connect, sin salir a buscar el término aparte.</li>
+      <li><strong>Extracción inicial de candidatos terminológicos</strong> mediante NLP sobre tu propio corpus, como punto de partida en vez de vaciar el glosario desde cero.</li></ul>
+    <ul lang="en"><li><strong>Building and maintaining a multilingual terminology glossary</strong> for a company or translation team, with records per language pair instead of a shared spreadsheet.</li>
+      <li><strong>Integrating that glossary into the tools already used day to day</strong> (Word, Trados, memoQ) via NeupaTerm Connect, without leaving the app to look up a term.</li>
+      <li><strong>Initial NLP-based term-candidate extraction</strong> over your own corpus, as a starting point instead of populating the glossary from scratch.</li></ul>
   </div>
 
   <p class="followup" lang="es">Arquitectura detallada, dificultades y aprendizajes concretos: este caso de estudio se ampliará con esos apartados según avance el proyecto — de momento la descripción de arriba es todo lo documentado.</p>
@@ -182,11 +194,13 @@
   <p style="margin-top:1.6rem;">
     <a class="manual-btn" href="/assets/manuals/neupaterm.pdf" target="_blank" rel="noopener"><span class="mi">PDF</span><span lang="es">Manual completo</span><span lang="en">Full manual</span></a>
   </p>
-  <p><a class="demo-link" href="https://www.neupaterm.com" target="_blank" rel="noopener"><span lang="es">Ver la plataforma</span><span lang="en">View the platform</span></a></p>
 
   <p class="foot">
     <span lang="es">¿Un problema parecido? </span><span lang="en">A similar problem? </span>
     <a href="mailto:juanmanuel@neupavert.com">juanmanuel@neupavert.com</a>
+    <br>
+    <a href="/aviso-legal/"><span lang="es">Aviso legal</span><span lang="en">Legal notice</span></a> ·
+    <a href="/privacidad/"><span lang="es">Política de privacidad</span><span lang="en">Privacy policy</span></a>
   </p>
 </main>
 

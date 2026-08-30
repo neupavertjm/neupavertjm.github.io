@@ -826,6 +826,7 @@
     <a href="#proyectos" lang="es">Proyectos</a><a href="#proyectos" lang="en">Projects</a>
     <a href="#casos-de-uso" lang="es">Casos de uso</a><a href="#casos-de-uso" lang="en">Use cases</a>
     <a href="#proceso" lang="es">Cómo trabajo</a><a href="#proceso" lang="en">How I work</a>
+    <a href="#datos" lang="es">Seguridad</a><a href="#datos" lang="en">Security</a>
     <a href="#sobre-mi" lang="es">Sobre mí</a><a href="#sobre-mi" lang="en">About me</a>
     <a href="#contacto" lang="es">Contacto</a><a href="#contacto" lang="en">Contact</a>
   </nav>
@@ -836,6 +837,7 @@
     <a href="#proyectos" lang="es">Proyectos</a><a href="#proyectos" lang="en">Projects</a>
     <a href="#casos-de-uso" lang="es">Casos de uso</a><a href="#casos-de-uso" lang="en">Use cases</a>
     <a href="#proceso" lang="es">Cómo trabajo</a><a href="#proceso" lang="en">How I work</a>
+    <a href="#datos" lang="es">Seguridad</a><a href="#datos" lang="en">Security</a>
     <a href="#sobre-mi" lang="es">Sobre mí</a><a href="#sobre-mi" lang="en">About me</a>
     <a href="#contacto" lang="es">Contacto</a><a href="#contacto" lang="en">Contact</a>
   </nav>
@@ -891,6 +893,8 @@
   <section id="servicios" class="reveal">
     <h2 class="label" lang="es">Qué hago</h2>
     <h2 class="label" lang="en">What I do</h2>
+    <p class="projects-note" lang="es">Lo más habitual: tienes documentación en papel, o repartida en carpetas sin criterio, y encontrar algo cuesta. La digitalizo, la organizo y te la devuelvo en PDF buscable, clasificada y con control de calidad. A partir de ahí, si hay tareas que se repiten, las automatizamos.</p>
+    <p class="projects-note" lang="en">The usual case: you have documents on paper, or scattered across folders with no system, and finding anything takes time. I digitize them, organize them and hand them back as searchable, classified PDFs with quality control. From there, if there are repetitive tasks, we automate them.</p>
     <div class="services-grid">
       <div class="service-item">
         <span class="tag">[ocr]</span>
@@ -938,13 +942,24 @@
       </div>
       <div class="service-item">
         <span class="tag">[datos]</span>
-        <strong lang="es">Automatización de datos documentales</strong><strong lang="en">Document data automation</strong>
-        <span class="desc" lang="es">Extracción de datos de tablas y documentos Word/PDF hacia Excel o bases de datos.</span>
-        <span class="desc" lang="en">Extracting data from tables and Word/PDF documents into Excel or databases.</span>
+        <strong lang="es">Extracción estructurada de documentos</strong><strong lang="en">Structured document extraction</strong>
+        <span class="desc" lang="es">Convierte cientos de documentos — contratos, artículos, informes — en una base de datos estructurada con los campos que necesites, no en un buscador.</span>
+        <span class="desc" lang="en">Turns hundreds of documents — contracts, articles, reports — into a structured database with the fields you need, not a search tool.</span>
         <details>
           <summary lang="es">¿Por qué?</summary><summary lang="en">Why?</summary>
-          <p class="why" lang="es">Copiar datos de tablas o PDFs a mano es lento y propenso a errores; automatizar esa extracción libera tiempo para las tareas que sí necesitan criterio humano.</p>
-          <p class="why" lang="en">Copying data from tables or PDFs by hand is slow and error-prone; automating that extraction frees up time for the tasks that actually need human judgment.</p>
+          <p class="why" lang="es">A veces no hace falta preguntar a los documentos, sino sacarles los datos de una vez: cliente, fecha, importe, autor, DOI... y volcarlos en una tabla que ya se pueda analizar, filtrar o cruzar con otros datos.</p>
+          <p class="why" lang="en">Sometimes the point isn't asking questions of the documents, but pulling the data out once and for all: client, date, amount, author, DOI... into a table that can already be analyzed, filtered, or cross-referenced with other data.</p>
+        </details>
+      </div>
+      <div class="service-item">
+        <span class="tag">[limpieza]</span>
+        <strong lang="es">Limpieza y normalización de datos</strong><strong lang="en">Data cleaning &amp; normalization</strong>
+        <span class="desc" lang="es">Detecta y unifica duplicados y variantes de un mismo dato — nombres, empresas, direcciones, productos — en hojas de cálculo y bases de datos.</span>
+        <span class="desc" lang="en">Detects and merges duplicates and variants of the same data — names, companies, addresses, products — across spreadsheets and databases.</span>
+        <details>
+          <summary lang="es">¿Por qué?</summary><summary lang="en">Why?</summary>
+          <p class="why" lang="es">Un mismo cliente escrito de cinco formas distintas en un Excel hace que ningún filtro, tabla dinámica o análisis posterior cuadre; unificarlo una vez evita arrastrar el error a cada informe futuro.</p>
+          <p class="why" lang="en">The same client written five different ways in a spreadsheet breaks every filter, pivot table and downstream analysis; fixing it once stops the error from carrying into every future report.</p>
         </details>
       </div>
     </div>
@@ -1046,7 +1061,7 @@
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="8" y1="18" x2="13" y2="18"/></svg></span>
           <p class="project-title">Digitalizador documental <span class="project-parens" lang="es">(OCR local)</span><span class="project-parens" lang="en">(local OCR)</span></p>
-          <span class="pmeta" lang="es">Prototipo</span><span class="pmeta" lang="en">Prototype</span>
+          <span class="pmeta" lang="es">En desarrollo</span><span class="pmeta" lang="en">In development</span>
         </div>
         <p class="pdesc" lang="es">Convierte documentos escaneados en texto buscable y editable, sin conexión a internet, siendo transparente sobre lo que no ha podido leer bien en vez de inventar contenido.</p>
         <p class="pdesc" lang="en">Turns scanned documents into searchable, editable text, entirely offline — transparent about what it couldn't read well instead of guessing.</p>
@@ -1061,7 +1076,6 @@
           <span lang="es">¿Quieres más información sobre este programa?</span>
           <span lang="en">Want more information about this program?</span>
         </a>
-        <a class="pcasestudy" href="/proyectos/digitalizador-ocr/"><span lang="es">Ver caso de estudio</span><span lang="en">View case study</span></a>
       </article>
 
       <article class="pcard">
@@ -1072,8 +1086,8 @@
         </div>
         <p class="pdesc" lang="es">Responde preguntas en lenguaje natural sobre una colección de documentos, citando siempre la página exacta de origen. Funciona enteramente en local cuando así se requiere, sin subir la documentación a ningún servicio externo; admite modelos en la nube como alternativa configurable.</p>
         <p class="pdesc" lang="en">Answers natural-language questions over a document collection, always citing the exact source page. Runs entirely locally when required, with no documents leaving the machine; cloud models are supported as a configurable alternative.</p>
-        <p class="pstack" lang="es">FastAPI · LlamaIndex · Ollama · local o en la nube</p>
-        <p class="pstack" lang="en">FastAPI · LlamaIndex · Ollama · local or cloud</p>
+        <p class="pstack" lang="es">FastAPI · LlamaIndex · Ollama o proveedor en la nube · app de escritorio (Tauri)</p>
+        <p class="pstack" lang="en">FastAPI · LlamaIndex · Ollama or cloud provider · desktop app (Tauri)</p>
         <div class="shots">
           <a href="assets/projects/ragdesk-chat.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/ragdesk-chat.png" alt="RagDesk — pregunta en lenguaje natural" width="280" height="180" loading="lazy"></a>
           <a href="assets/projects/ragdesk-respuesta.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/ragdesk-respuesta.png" alt="RagDesk — respuesta con cita a la página" width="280" height="180" loading="lazy"></a>
@@ -1084,45 +1098,22 @@
           <span lang="es">¿Quieres más información sobre este programa?</span>
           <span lang="en">Want more information about this program?</span>
         </a>
-        <a class="pcasestudy" href="/proyectos/ragdesk/"><span lang="es">Ver caso de estudio</span><span lang="en">View case study</span></a>
-      </article>
-
-      <article class="pcard">
-        <div class="pcard-head">
-          <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7z"/><circle cx="7.3" cy="13" r="0.9" fill="currentColor" stroke="none"/><line x1="10" y1="13" x2="17" y2="13"/><circle cx="7.3" cy="16" r="0.9" fill="currentColor" stroke="none"/><line x1="10" y1="16" x2="15" y2="16"/></svg></span>
-          <p class="project-title">ClientWorkspace <span class="project-parens" lang="es">(Puesto de mando documental)</span><span class="project-parens" lang="en">(Document operations workspace)</span></p>
-          <span class="pmeta" lang="es">Prototipo</span><span class="pmeta" lang="en">Prototype</span>
-        </div>
-        <p class="pdesc" lang="es">Orquesta el digitalizador OCR y RagDesk en un único flujo por cliente, sin mezclar nunca documentos ni índices entre ellos.</p>
-        <p class="pdesc" lang="en">Orchestrates the OCR digitizer and RagDesk into a single per-client flow, never mixing documents or indexes between them.</p>
-        <p class="pstack" lang="es">FastAPI · React/Vite · SQLite (FTS5) · orquesta procesos existentes</p>
-        <p class="pstack" lang="en">FastAPI · React/Vite · SQLite (FTS5) · orchestrates existing tools</p>
-        <div class="shots">
-          <a href="assets/projects/clientworkspace-proyecto.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/clientworkspace-proyecto.png" alt="ClientWorkspace — inventario de un proyecto con estado OCR y RagDesk" width="252" height="180" loading="lazy"></a>
-        </div>
-        <a class="pmanual" href="assets/manuals/clientworkspace.pdf" target="_blank" rel="noopener">
-          <span class="pmanual-icon">PDF</span>
-          <span lang="es">¿Quieres más información sobre este programa?</span>
-          <span lang="en">Want more information about this program?</span>
-        </a>
-        <a class="pcasestudy" href="/proyectos/clientworkspace/"><span lang="es">Ver caso de estudio</span><span lang="en">View case study</span></a>
       </article>
 
       <article class="pcard">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4V3z"/><line x1="8.5" y1="8" x2="15.5" y2="8"/><line x1="8.5" y1="11" x2="15.5" y2="11"/></svg></span>
           <p class="project-title">NeuAlz <span class="project-parens" lang="es">(Lector de PDF y base de conocimiento)</span><span class="project-parens" lang="en">(PDF reader &amp; knowledge base)</span></p>
-          <span class="pmeta" lang="es">Prototipo</span><span class="pmeta" lang="en">Prototype</span>
+          <span class="pmeta" lang="es">En desarrollo</span><span class="pmeta" lang="en">In development</span>
         </div>
-        <p class="pdesc" lang="es">Lector de PDF que convierte cada fragmento seleccionado en una ficha de cita clasificada y buscable, con metadatos bibliográficos y salto directo a la página original. Pensado para investigación, revisión documental y trabajo con bibliografía extensa.</p>
-        <p class="pdesc" lang="en">PDF reader that turns each selected fragment into a searchable, tagged citation card with bibliographic metadata and a direct link back to the original page. Built for research, document review, and working with large bibliographies.</p>
-        <p class="pstack">Tauri · Rust · SQLite (FTS5)</p>
+        <p class="pdesc" lang="es">Lee, resalta y organiza tus PDF en una biblioteca de citas clasificada y buscable, con salto directo a la página original — todo en local. Tres variantes (académica, legal, empresarial) comparten el mismo código.</p>
+        <p class="pdesc" lang="en">Read, highlight and organize your PDFs into a searchable, classified citation library, with a direct link back to the original page — all locally. Three variants (academic, legal, business) share the same codebase.</p>
+        <p class="pstack">Tauri v2 · Rust · React + TypeScript · pdf.js</p>
         <a class="pmanual" href="assets/manuals/neualz.pdf" target="_blank" rel="noopener">
           <span class="pmanual-icon">PDF</span>
           <span lang="es">¿Quieres más información sobre este programa?</span>
           <span lang="en">Want more information about this program?</span>
         </a>
-        <a class="pcasestudy" href="/proyectos/neualz/"><span lang="es">Ver caso de estudio</span><span lang="en">View case study</span></a>
       </article>
 
       <article class="pcard">
@@ -1133,7 +1124,7 @@
         </div>
         <p class="pdesc" lang="es">Laboratorio de lingüística de corpus en el navegador, sin escribir código. Flujo completo: importación multifuente (web, Wikipedia, archivos) → limpieza y normalización → análisis morfosintáctico con spaCy → extracción terminológica (C-value) → concordancias KWIC → exportación.</p>
         <p class="pdesc" lang="en">Browser-based corpus-linguistics lab, no coding required. End-to-end flow: multi-source import (web, Wikipedia, files) → cleaning and normalization → morphosyntactic analysis with spaCy → term extraction (C-value) → KWIC concordances → export.</p>
-        <p class="pstack">Python · Streamlit · spaCy</p>
+        <p class="pstack">FastAPI · React + Vite · spaCy · Docker</p>
         <div class="shots">
           <a href="assets/projects/alzolab-importar.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/alzolab-importar.png" alt="AlzoLab — importación" width="255" height="180" loading="lazy"></a>
           <a href="assets/projects/alzolab-limpiar.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/alzolab-limpiar.png" alt="AlzoLab — limpieza y normalización" width="247" height="180" loading="lazy"></a>
@@ -1179,13 +1170,12 @@
         </div>
         <p class="pdesc" lang="es">Plataforma para la documentación de lenguas minoritarias y en peligro. Interoperabilidad FLEx/ELAN/CLDF, glosa interlineal Leipzig, consentimiento informado (CARE/FAIR) y editor offline.</p>
         <p class="pdesc" lang="en">Platform for documenting minority and endangered languages. FLEx/ELAN/CLDF interoperability, Leipzig interlinear glossing, informed consent (CARE/FAIR) and offline editor.</p>
-        <p class="pstack">FastAPI · React · Tauri</p>
+        <p class="pstack">Tauri (app offline) · FastAPI + PostgreSQL (web) · React</p>
         <a class="pmanual" href="assets/manuals/neupalang.pdf" target="_blank" rel="noopener">
           <span class="pmanual-icon">PDF</span>
           <span lang="es">¿Quieres más información sobre este programa?</span>
           <span lang="en">Want more information about this program?</span>
         </a>
-        <a class="pcasestudy" href="/proyectos/neupalang/"><span lang="es">Ver caso de estudio</span><span lang="en">View case study</span></a>
       </article>
 
     </div>
@@ -1203,8 +1193,8 @@
         <span class="tag">[despacho profesional]</span>
         <strong lang="es">Consulta interna sobre expedientes</strong>
         <strong lang="en">Internal query over case files</strong>
-        <p lang="es">Un despacho con miles de expedientes en papel y PDF escaneado necesita buscar cláusulas y precedentes sin releer carpeta por carpeta. El Digitalizador OCR y RagDesk, orquestados por cliente con ClientWorkspace, cubrirían ese flujo, citando siempre la página exacta del expediente.</p>
-        <p lang="en">A firm with thousands of paper and scanned-PDF case files needs to search clauses and precedents without re-reading folder by folder. The OCR digitizer and RagDesk, orchestrated per client via ClientWorkspace, would cover that flow, always citing the exact page of the file.</p>
+        <p lang="es">Un despacho con miles de expedientes en papel y PDF escaneado necesita buscar cláusulas y precedentes sin releer carpeta por carpeta. El Digitalizador OCR y RagDesk cubrirían ese flujo, citando siempre la página exacta del expediente.</p>
+        <p lang="en">A firm with thousands of paper and scanned-PDF case files needs to search clauses and precedents without re-reading folder by folder. The OCR digitizer and RagDesk would cover that flow, always citing the exact page of the file.</p>
         <span class="usecase-badge" lang="es">demostrador — sin cliente real</span>
         <span class="usecase-badge" lang="en">demonstrator — no real client</span>
       </div>
@@ -1286,6 +1276,35 @@
     <div class="edu-item">
       <p lang="es"><strong>5. Mantenimiento opcional</strong> — si lo necesitas, sigo disponible mes a mes; si no, el proyecto queda cerrado.</p>
       <p lang="en"><strong>5. Optional ongoing maintenance</strong> — available month to month if you need it; otherwise the project is simply done.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="datos" class="reveal">
+    <h2 class="label" lang="es">Tus documentos, seguros</h2>
+    <h2 class="label" lang="en">Your documents, safe</h2>
+    <p class="projects-note" lang="es">Trabajar con la documentación de una empresa es una responsabilidad. Así la trato:</p>
+    <p class="projects-note" lang="en">Working with a company's documents is a responsibility. This is how I handle it:</p>
+    <div class="edu-item">
+      <p lang="es"><strong>Canal seguro.</strong> Los documentos llegan por una vía acordada contigo o por tu propio sistema, nunca en correos sueltos.</p>
+      <p lang="en"><strong>Secure channel.</strong> Documents arrive through a channel agreed with you, or through your own system — never as loose email attachments.</p>
+    </div>
+    <div class="edu-item">
+      <p lang="es"><strong>Aislados y cifrados.</strong> Se trabajan en un equipo con el disco cifrado, en una carpeta exclusiva para tu empresa, sin mezclarse con los de ningún otro cliente.</p>
+      <p lang="en"><strong>Isolated and encrypted.</strong> They are processed on a machine with an encrypted disk, in a folder exclusive to your company, never mixed with any other client's.</p>
+    </div>
+    <div class="edu-item">
+      <p lang="es"><strong>Procesamiento en local.</strong> El OCR, la clasificación y la extracción se hacen en mi equipo. Tus documentos no se envían a servicios de inteligencia artificial en la nube salvo que lo autorices por escrito para una tarea concreta.</p>
+      <p lang="en"><strong>Local processing.</strong> OCR, classification and extraction run on my own machine. Your documents are not sent to cloud AI services unless you authorize it in writing for a specific task.</p>
+    </div>
+    <div class="edu-item">
+      <p lang="es"><strong>Borrado con certificado.</strong> Cumplido el plazo de conservación acordado, tus datos se eliminan de forma segura y recibes un certificado de qué se ha borrado y cuándo.</p>
+      <p lang="en"><strong>Deletion with a certificate.</strong> Once the agreed retention period ends, your data is securely deleted and you receive a certificate of what was deleted and when.</p>
+    </div>
+    <div class="edu-item">
+      <p lang="es"><strong>Marco RGPD.</strong> Actúo como encargado del tratamiento (art. 28 RGPD), con contrato de encargo y registro de actividades. <a href="/privacidad/">Más detalle</a>.</p>
+      <p lang="en"><strong>GDPR framework.</strong> I act as data processor (Art. 28 GDPR), with a processing agreement and a record of processing activities. <a href="/privacidad/">More detail</a>.</p>
     </div>
   </section>
 
@@ -1417,6 +1436,9 @@
 
   <footer class="foot">
     <span lang="es">Jerez de la Frontera, Cádiz · Disponible en remoto</span><span lang="en">Jerez de la Frontera, Cádiz (Spain) · Available for remote work</span>
+    <br>
+    <a href="/aviso-legal/"><span lang="es">Aviso legal</span><span lang="en">Legal notice</span></a> ·
+    <a href="/privacidad/"><span lang="es">Política de privacidad</span><span lang="en">Privacy policy</span></a>
   </footer>
 
 </div>
@@ -1453,7 +1475,7 @@
 <script>
   (function () {
     var sections = Array.prototype.slice.call(
-      document.querySelectorAll('#inicio, #servicios, #proyectos, #casos-de-uso, #proceso, #sobre-mi, #contacto')
+      document.querySelectorAll('#inicio, #servicios, #proyectos, #casos-de-uso, #proceso, #datos, #sobre-mi, #contacto')
     );
     var navLinks = Array.prototype.slice.call(
       document.querySelectorAll('.sidenav a, .sidenav-mobile a')

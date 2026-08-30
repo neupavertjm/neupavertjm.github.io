@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Política de privacidad — Juan Manuel Neupavert Alzola</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Política de privacidad y de cookies del sitio web neupavert.com conforme al RGPD y la LOPDGDD.">
+<link rel="canonical" href="https://www.neupavert.com/privacidad/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Juan Manuel Neupavert Alzola">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1b1c1f;
+    --body: #2c2d2e;
+    --muted: #52534f;
+    --dim: #86877f;
+    --accent: #8a5c0e;
+    --accent-ink: #fbf7ee;
+    --accent-hover: #6b4709;
+    --accent2: #1c6f66;
+    --bg: #f5f4ef;
+    --card-bg: #ffffff;
+    --rule: #dedcd4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eae7de;
+      --body: #c7c9c2;
+      --muted: #9aa0ad;
+      --dim: #6d7180;
+      --accent: #e8a23c;
+      --accent-ink: #12141c;
+      --accent-hover: #f4b862;
+      --accent2: #4fb3a8;
+      --bg: #12141c;
+      --card-bg: #171a24;
+      --rule: #262a38;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #eae7de;
+    --body: #c7c9c2;
+    --muted: #9aa0ad;
+    --dim: #6d7180;
+    --accent: #e8a23c;
+    --accent-ink: #12141c;
+    --accent-hover: #f4b862;
+    --accent2: #4fb3a8;
+    --bg: #12141c;
+    --card-bg: #171a24;
+    --rule: #262a38;
+  }
+  :root[data-theme="light"] {
+    --ink: #1b1c1f;
+    --body: #2c2d2e;
+    --muted: #52534f;
+    --dim: #86877f;
+    --accent: #8a5c0e;
+    --accent-ink: #fbf7ee;
+    --accent-hover: #6b4709;
+    --accent2: #1c6f66;
+    --bg: #f5f4ef;
+    --card-bg: #ffffff;
+    --rule: #dedcd4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--body);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 760px; margin: 0 auto; padding: 3.5rem 1.5rem 4rem; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .backlink {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: inline-block;
+    margin-bottom: 2.5rem;
+  }
+  .backlink::before { content: '\2190  '; }
+
+  .label {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.06em;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+  }
+  .label::before { content: '// '; color: var(--dim); }
+
+  h1 {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+
+  .updated {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.75rem;
+    color: var(--dim);
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  p { margin-bottom: 1rem; max-width: 68ch; }
+  ul { margin: 0 0 1rem 1.25rem; max-width: 68ch; }
+  li { margin-bottom: 0.35rem; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .datos {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.25rem 1.4rem;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  .datos dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.2rem; }
+  .datos dt {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-top: 0.15rem;
+  }
+  .datos dd { color: var(--body); }
+  @media (max-width: 520px) {
+    .datos dl { grid-template-columns: 1fr; gap: 0.1rem; }
+    .datos dd { margin-bottom: 0.6rem; }
+  }
+
+  .pending {
+    color: var(--accent);
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.9em;
+  }
+
+  hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+  .foot {
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .foot a { color: var(--muted); text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="backlink" href="/">Volver al inicio</a>
+
+  <p class="label">Información legal</p>
+  <h1>Política de privacidad</h1>
+  <p class="updated">Última actualización: agosto de 2026</p>
+
+  <p>Esta política explica cómo se tratan los datos personales de quienes visitan o contactan a través del sitio web <strong>neupavert.com</strong>, conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD).</p>
+
+  <h2>1. Responsable del tratamiento</h2>
+  <div class="datos">
+    <dl>
+      <dt>Responsable</dt><dd>Juan Manuel Neupavert Alzola</dd>
+      <dt>NIF</dt><dd>32100747S</dd>
+      <dt>Correo</dt><dd><a href="mailto:juanmanuel@neupavert.com">juanmanuel@neupavert.com</a></dd>
+      <dt>Ubicación</dt><dd>Jerez de la Frontera, Cádiz (España)</dd>
+    </dl>
+  </div>
+
+  <h2>2. Qué datos se tratan y con qué finalidad</h2>
+  <p>El Sitio es informativo y <strong>no incluye formularios ni registro de usuarios</strong>. Solo se tratan datos personales en un caso:</p>
+  <ul>
+    <li><strong>Cuando escribes un correo</strong> a la dirección de contacto: tu nombre, tu dirección de correo electrónico y cualquier dato que incluyas en el mensaje. La finalidad es atender tu consulta y, si procede, gestionar la relación precontractual (preparar un presupuesto) o contractual.</li>
+  </ul>
+
+  <h2>3. Base jurídica</h2>
+  <ul>
+    <li>La aplicación de <strong>medidas precontractuales</strong> solicitadas por ti y, en su caso, la <strong>ejecución de un contrato</strong> (art. 6.1.b RGPD).</li>
+    <li>Tu <strong>consentimiento</strong> al dirigirte voluntariamente al responsable (art. 6.1.a RGPD).</li>
+    <li>El <strong>interés legítimo</strong> del responsable en mantener la seguridad y el funcionamiento del Sitio (art. 6.1.f RGPD), respecto de los registros técnicos del apartado 6.</li>
+  </ul>
+
+  <h2>4. Conservación</h2>
+  <p>Los datos de tu consulta se conservan mientras dure la comunicación y, si se inicia una relación profesional, durante su vigencia y los plazos de prescripción legal (fiscales y mercantiles, hasta un máximo habitual de 6 años). Si tras el contacto no se establece ninguna relación, los datos se eliminan cuando dejan de ser necesarios.</p>
+
+  <h2>5. Destinatarios</h2>
+  <p>No se ceden datos a terceros, salvo obligación legal. Intervienen los siguientes proveedores como encargados del tratamiento:</p>
+  <ul>
+    <li><strong>Proveedor de correo electrónico:</strong> Zoho Corporation (Zoho Mail), que presta el servicio de gestión del buzón <em>juanmanuel@neupavert.com</em>.</li>
+    <li><strong>GitHub, Inc.</strong> (EE. UU.), como proveedor de alojamiento del Sitio (GitHub Pages).</li>
+  </ul>
+
+  <h2>6. Registros técnicos y transferencias internacionales</h2>
+  <p>Al servir las páginas, la infraestructura de GitHub Pages puede registrar de forma automática datos técnicos como la dirección IP, la fecha y hora de la petición y el navegador utilizado, con fines de seguridad y de funcionamiento. Esto implica una transferencia de datos a Estados Unidos, amparada en el marco <em>EU-US Data Privacy Framework</em> y/o en las cláusulas contractuales tipo de la Comisión Europea.</p>
+  <p>El proveedor de correo (Zoho) puede tratar los datos de los mensajes en centros de datos situados dentro o fuera del Espacio Económico Europeo, según la configuración de la cuenta; cuando la transferencia se produce fuera del EEE, se ampara en las cláusulas contractuales tipo de la Comisión Europea.</p>
+
+  <h2>7. Cookies</h2>
+  <p>Este Sitio <strong>no utiliza cookies</strong> ni balizas, ni herramientas de analítica o de seguimiento publicitario. Por eso no se muestra ningún aviso de cookies.</p>
+  <p>El Sitio sí utiliza el almacenamiento local del navegador (<em>localStorage</em>) para recordar dos preferencias tuyas —el idioma y el tema claro/oscuro—. Esa información se guarda únicamente en tu dispositivo, no se envía a ningún servidor y no permite identificarte, por lo que está exenta del deber de consentimiento (art. 22.2 LSSI). Puedes borrarla desde los ajustes de tu navegador.</p>
+
+  <h2>8. Tus derechos</h2>
+  <p>Puedes ejercer los derechos de <strong>acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad</strong> escribiendo a <a href="mailto:juanmanuel@neupavert.com">juanmanuel@neupavert.com</a>, indicando el derecho que ejercitas. Si consideras que el tratamiento no se ajusta a la normativa, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">aepd.es</a>).</p>
+
+  <h2>9. Datos de clientes y de sus documentos</h2>
+  <p>Cuando se contrata un servicio que implica tratar documentación de un cliente, el responsable de esos datos es el propio cliente y Juan Manuel Neupavert Alzola actúa como <strong>encargado del tratamiento</strong>. En ese caso se firma un contrato de encargo conforme al art. 28 RGPD, con el detalle de finalidades, plazos, medidas de seguridad y subencargados, y se lleva un registro de actividades de tratamiento. Esta política de privacidad se refiere únicamente a la navegación por el Sitio.</p>
+
+  <h2>10. Cambios</h2>
+  <p>Esta política puede actualizarse para adaptarla a cambios normativos o de los servicios utilizados. La fecha de la última actualización figura al principio.</p>
+
+  <hr>
+  <p>Consulta también el <a href="/aviso-legal/">Aviso legal</a>.</p>
+
+  <footer class="foot">
+    <a href="/">neupavert.com</a> · Jerez de la Frontera, Cádiz
+  </footer>
+
+</div>
+</body>
+</html>

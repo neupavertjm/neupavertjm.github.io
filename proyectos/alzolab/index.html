@@ -114,6 +114,14 @@
   .foot { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
   .demo-link { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; }
   .demo-link::after { content: '\2192'; }
+  .demo-hero {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.95rem; font-weight: 700; color: var(--accent-ink);
+    background: var(--accent2); border-radius: 5px; padding: 0.6rem 1.2rem;
+    margin-bottom: 1.6rem;
+  }
+  .demo-hero:hover { opacity: 0.85; color: var(--accent-ink); }
+  .demo-hero::after { content: '\2192'; margin-left: 0.1rem; }
   .lang-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 10; display: flex; font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; background: var(--bg); }
   .lang-toggle button { font: inherit; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.3rem 0.62rem; border: none; background: transparent; color: var(--muted); cursor: pointer; }
   .lang-toggle button + button { border-left: 1px solid var(--rule); }
@@ -146,17 +154,21 @@
 
   <div class="pmeta-row">
     <span class="pmeta" lang="es">En producción</span><span class="pmeta" lang="en">In production</span>
-    <span class="pstack">Python · Streamlit · spaCy</span>
+    <span class="pstack">FastAPI · React + Vite · spaCy · Docker</span>
   </div>
+
+  <p><a class="demo-hero" href="https://jmneupavert-alzolab.hf.space/" target="_blank" rel="noopener"><span lang="es">Probar la demo en vivo</span><span lang="en">Try the live demo</span></a></p>
 
   <h2 lang="es">Qué hace</h2><h2 lang="en">What it does</h2>
   <div lang="es">
-    <p>Convierte un conjunto de textos en un corpus analizable sin escribir una línea de código: importación desde varias fuentes (web, Wikipedia, archivos propios), limpieza y normalización, análisis morfosintáctico con spaCy, extracción automática de términos relevantes (C-value) y concordancias KWIC para ver cada término en su contexto real de uso.</p>
-    <p>Todo el flujo — desde subir los textos hasta exportar los resultados — ocurre dentro de la misma interfaz, pensado para alguien sin experiencia de programación.</p>
+    <p>Convierte un conjunto de textos en un corpus analizable sin escribir una línea de código: importación desde varias fuentes (web, Wikipedia, archivos propios), limpieza y normalización, análisis morfosintáctico con spaCy, extracción automática de términos relevantes y concordancias KWIC para ver cada término en su contexto real de uso. Funciona en español e inglés — un único selector cambia tanto el idioma de la interfaz como el modelo de spaCy usado en el análisis.</p>
+    <p>La extracción terminológica usa el algoritmo C-value (Frantzi, Ananiadou y Mima, 2000), un método estadístico-lingüístico estándar en la literatura de extracción terminológica, no una heurística improvisada.</p>
+    <p>Todo el flujo — desde subir los textos hasta exportar los resultados — ocurre dentro de la misma interfaz, pensado para alguien sin experiencia de programación. El código es abierto (MIT) y está en GitHub, con tests automáticos en cada cambio.</p>
   </div>
   <div lang="en">
-    <p>It turns a set of texts into an analyzable corpus without writing a line of code: import from several sources (web, Wikipedia, own files), cleaning and normalization, morphosyntactic analysis with spaCy, automatic extraction of relevant terms (C-value), and KWIC concordances to see each term in its real context of use.</p>
-    <p>The whole flow — from uploading the texts to exporting the results — happens inside the same interface, built for someone with no programming experience.</p>
+    <p>It turns a set of texts into an analyzable corpus without writing a line of code: import from several sources (web, Wikipedia, own files), cleaning and normalization, morphosyntactic analysis with spaCy, automatic term extraction, and KWIC concordances to see each term in its real context of use. It works in Spanish and English — a single selector switches both the interface language and the spaCy model used in the analysis.</p>
+    <p>Term extraction uses the C-value algorithm (Frantzi, Ananiadou &amp; Mima, 2000), a standard statistical-linguistic method in the term-extraction literature, not an improvised heuristic.</p>
+    <p>The whole flow — from uploading the texts to exporting the results — happens inside the same interface, built for someone with no programming experience. The code is open source (MIT) and on GitHub, with automated tests on every change.</p>
   </div>
 
     <h2 lang="es">Cómo se ve en uso</h2>
@@ -170,10 +182,12 @@
 
   <h2 lang="es">Servicios relacionados</h2><h2 lang="en">Related services</h2>
   <div class="services-note">
-    <ul lang="es"><li><strong>Extracción de terminología especializada</strong> de un fondo documental (técnico, jurídico, médico) como base para un glosario o una memoria de traducción.</li>
-      <li><strong>Análisis de corpus a medida</strong> para traductores, editoriales o equipos de contenido que trabajan con grandes volúmenes de texto.</li></ul>
-    <ul lang="en"><li><strong>Extracting specialized terminology</strong> from a document collection (technical, legal, medical) as the basis for a glossary or translation memory.</li>
-      <li><strong>Custom corpus analysis</strong> for translators, publishers or content teams working with large volumes of text.</li></ul>
+    <ul lang="es"><li><strong>Extracción de terminología especializada</strong> de un fondo documental (técnico, jurídico, médico) como base para un glosario o una memoria de traducción, en español o en inglés.</li>
+      <li><strong>Análisis de corpus a medida</strong> para traductores, editoriales o equipos de contenido que trabajan con grandes volúmenes de texto — importación desde web, Wikipedia o archivos propios incluida.</li>
+      <li><strong>Puesta en marcha de una instancia propia</strong> si necesitas mantener tu corpus separado del demostrador público.</li></ul>
+    <ul lang="en"><li><strong>Extracting specialized terminology</strong> from a document collection (technical, legal, medical) as the basis for a glossary or translation memory, in Spanish or English.</li>
+      <li><strong>Custom corpus analysis</strong> for translators, publishers or content teams working with large volumes of text — import from the web, Wikipedia or your own files included.</li>
+      <li><strong>Setting up your own instance</strong> if you need to keep your corpus separate from the public demo.</li></ul>
   </div>
 
   <p class="followup" lang="es">Arquitectura detallada, dificultades y aprendizajes concretos: este caso de estudio se ampliará con esos apartados según avance el proyecto — de momento la descripción de arriba es todo lo documentado.</p>
@@ -182,11 +196,14 @@
   <p style="margin-top:1.6rem;">
     <a class="manual-btn" href="/assets/manuals/alzolab.pdf" target="_blank" rel="noopener"><span class="mi">PDF</span><span lang="es">Manual completo</span><span lang="en">Full manual</span></a>
   </p>
-  <p><a class="demo-link" href="https://jmneupavert-alzolab.hf.space/" target="_blank" rel="noopener"><span lang="es">Probar la demo en vivo</span><span lang="en">Try the live demo</span></a></p>
+  <p><a class="demo-link" href="https://github.com/neupavertjm/alzolab" target="_blank" rel="noopener"><span lang="es">Ver el código en GitHub</span><span lang="en">View the code on GitHub</span></a></p>
 
   <p class="foot">
     <span lang="es">¿Un problema parecido? </span><span lang="en">A similar problem? </span>
     <a href="mailto:juanmanuel@neupavert.com">juanmanuel@neupavert.com</a>
+    <br>
+    <a href="/aviso-legal/"><span lang="es">Aviso legal</span><span lang="en">Legal notice</span></a> ·
+    <a href="/privacidad/"><span lang="es">Política de privacidad</span><span lang="en">Privacy policy</span></a>
   </p>
 </main>
 
