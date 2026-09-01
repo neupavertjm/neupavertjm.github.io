@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.neupavert.com/sitemap.xml
+Sitemap: https://neupavert.com/sitemap.xml

@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.neupavert.com/</loc>
+    <loc>https://neupavert.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.neupavert.com/demo/</loc>
+    <loc>https://neupavert.com/demo/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.neupavert.com/proyectos/alzolab/</loc>
+    <loc>https://neupavert.com/proyectos/alzolab/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.neupavert.com/proyectos/neupaterm/</loc>
+    <loc>https://neupavert.com/proyectos/neupaterm/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.neupavert.com/aviso-legal/</loc>
+    <loc>https://neupavert.com/aviso-legal/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://www.neupavert.com/privacidad/</loc>
+    <loc>https://neupavert.com/privacidad/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
