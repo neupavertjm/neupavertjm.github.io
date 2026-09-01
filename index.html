@@ -677,7 +677,7 @@
   }
   .usecase-badge::before { content: '\25CF'; font-size: 0.5rem; }
   .demo-cta {
-    display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.3rem;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-top: 1.3rem;
     font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
     font-size: 0.9rem; font-weight: 600; color: var(--ink);
   }
@@ -805,7 +805,7 @@
     color: var(--muted);
   }
 </style>
-<script>try{if(localStorage.getItem('lang')==='en')document.documentElement.setAttribute('data-lang','en');}catch(e){}</script>
+<script>try{if(localStorage.getItem('lang')==='en'){document.documentElement.setAttribute('data-lang','en');document.documentElement.lang='en';}}catch(e){}</script>
 </head>
 <body>
 
@@ -1082,17 +1082,21 @@
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="12.5" x2="14" y2="12.5"/></svg></span>
           <p class="project-title">RagDesk <span class="project-parens" lang="es">(Asistente documental privado)</span><span class="project-parens" lang="en">(Private document assistant)</span></p>
-          <span class="pmeta" lang="es">En desarrollo</span><span class="pmeta" lang="en">In development</span>
+          <span class="pmeta" lang="es">Demo pública</span><span class="pmeta" lang="en">Live demo</span>
         </div>
         <p class="pdesc" lang="es">Responde preguntas en lenguaje natural sobre una colección de documentos, citando siempre la página exacta de origen. Funciona enteramente en local cuando así se requiere, sin subir la documentación a ningún servicio externo; admite modelos en la nube como alternativa configurable.</p>
         <p class="pdesc" lang="en">Answers natural-language questions over a document collection, always citing the exact source page. Runs entirely locally when required, with no documents leaving the machine; cloud models are supported as a configurable alternative.</p>
-        <p class="pstack" lang="es">FastAPI · LlamaIndex · Ollama o proveedor en la nube · app de escritorio (Tauri)</p>
-        <p class="pstack" lang="en">FastAPI · LlamaIndex · Ollama or cloud provider · desktop app (Tauri)</p>
+        <p class="pstack" lang="es">FastAPI · LlamaIndex · Ollama o proveedor en la nube · app de escritorio (Tauri) y despliegue web</p>
+        <p class="pstack" lang="en">FastAPI · LlamaIndex · Ollama or cloud provider · desktop app (Tauri) and web deployment</p>
         <div class="shots">
           <a href="assets/projects/ragdesk-chat.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/ragdesk-chat.png" alt="RagDesk — pregunta en lenguaje natural" width="280" height="180" loading="lazy"></a>
           <a href="assets/projects/ragdesk-respuesta.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/ragdesk-respuesta.png" alt="RagDesk — respuesta con cita a la página" width="280" height="180" loading="lazy"></a>
           <a href="assets/projects/ragdesk-documentos.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/ragdesk-documentos.png" alt="RagDesk — documentos ingestados" width="280" height="180" loading="lazy"></a>
         </div>
+        <p class="demo-cta">
+          <span lang="es">Pruébala en</span><span lang="en">Try it at</span>
+          <a href="https://ragdesk.neupavert.com" target="_blank" rel="noopener">ragdesk.neupavert.com</a>
+        </p>
         <a class="pmanual" href="assets/manuals/ragdesk.pdf" target="_blank" rel="noopener">
           <span class="pmanual-icon">PDF</span>
           <span lang="es">¿Quieres más información sobre este programa?</span>
@@ -1211,8 +1215,8 @@
         <span class="tag">[documentación técnica]</span>
         <strong lang="es">Asistente sobre manuales y procedimientos</strong>
         <strong lang="en">Assistant over manuals and procedures</strong>
-        <p lang="es">Una empresa con manuales de producto, procedimientos internos y normativa dispersa en cientos de documentos podría centralizarlos en un asistente de consulta privado, para que cualquier empleado pregunte en lenguaje natural en vez de bucear en carpetas compartidas.</p>
-        <p lang="en">A company with product manuals, internal procedures and regulations scattered across hundreds of documents could centralize them into a private query assistant, so any employee can ask in natural language instead of digging through shared folders.</p>
+        <p lang="es">Una empresa con manuales de producto, procedimientos internos y normativa dispersa en cientos de documentos podría centralizarlos en un asistente de consulta privado, para que cualquier empleado pregunte en lenguaje natural en vez de bucear en carpetas compartidas. Puedes ver el patrón funcionando en la <a href="https://ragdesk.neupavert.com" target="_blank" rel="noopener">demo pública de RagDesk</a>.</p>
+        <p lang="en">A company with product manuals, internal procedures and regulations scattered across hundreds of documents could centralize them into a private query assistant, so any employee can ask in natural language instead of digging through shared folders. You can see the pattern in action in the <a href="https://ragdesk.neupavert.com" target="_blank" rel="noopener">public RagDesk demo</a>.</p>
         <span class="usecase-badge" lang="es">demostrador — sin cliente real</span>
         <span class="usecase-badge" lang="en">demonstrator — no real client</span>
       </div>
@@ -1452,6 +1456,7 @@
     };
     function apply(lang) {
       root.setAttribute('data-lang', lang);
+      root.lang = lang;
       if (titles[lang]) document.title = titles[lang];
       var btns = document.querySelectorAll('.lang-toggle button');
       for (var i = 0; i < btns.length; i++) {

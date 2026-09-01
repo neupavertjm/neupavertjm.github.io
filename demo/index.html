@@ -142,7 +142,7 @@
   .lang-toggle button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
-<script>try{if(localStorage.getItem('lang')==='en')document.documentElement.setAttribute('data-lang','en');}catch(e){}</script>
+<script>try{if(localStorage.getItem('lang')==='en'){document.documentElement.setAttribute('data-lang','en');document.documentElement.lang='en';}}catch(e){}</script>
 </head>
 <body>
 
@@ -212,6 +212,7 @@
     var root = document.documentElement;
     function apply(lang) {
       root.setAttribute('data-lang', lang);
+      root.lang = lang;
       var btns = document.querySelectorAll('.lang-toggle button');
       for (var i = 0; i < btns.length; i++) {
         btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-set-lang') === lang ? 'true' : 'false');
