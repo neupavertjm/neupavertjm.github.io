@@ -39,7 +39,6 @@
   "@type": "Person",
   "name": "Juan Manuel Neupavert Alzola",
   "url": "https://neupavert.com/",
-  "image": "https://neupavert.com/assets/avatar.jpg",
   "email": "mailto:juanmanuel@neupavert.com",
   "jobTitle": "Especialista en servicios tecnológicos y lingüísticos",
   "address": {
@@ -266,6 +265,37 @@
     border: 3px solid var(--bg);
     box-shadow: 0 0 0 3px var(--accent);
   }
+
+  .avatar-mark {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 136px;
+  }
+  .avatar-mark .mark {
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-weight: 600;
+    font-size: 4.6rem;
+    letter-spacing: -0.02em;
+  }
+  .avatar-mark .caret { color: var(--dim); }
+  .avatar-mark .letters { color: var(--accent); }
+  .avatar-mark .cursor {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.85em;
+    background: var(--accent);
+    margin-left: 0.05em;
+    vertical-align: -0.1em;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .avatar-mark .cursor { animation: avatar-blink 1.1s steps(1) infinite; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .avatar-mark .cursor { animation: none; }
+  }
+  @keyframes avatar-blink { 50% { opacity: 0; } }
 
   .header-text { flex: 1; min-width: 0; }
 
@@ -843,7 +873,7 @@
   </nav>
 
   <header class="header" id="inicio">
-    <img class="avatar" src="assets/avatar.jpg" alt="Juan Manuel Neupavert Alzola" width="136" height="136">
+    <div class="avatar-mark" role="img" aria-label="Juan Manuel Neupavert Alzola"><span class="mark" aria-hidden="true"><span class="caret">&gt;</span><span class="letters">jn</span><span class="cursor"></span></span></div>
     <div class="header-text prose">
       <p class="kwic" lang="es">…lingüista computacional que también programa → <span class="kw">JUAN MANUEL NEUPAVERT</span> ← especialista en automatización documental…</p>
       <p class="kwic" lang="en">…computational linguist who also writes code → <span class="kw">JUAN MANUEL NEUPAVERT</span> ← document-automation specialist…</p>
