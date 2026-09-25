@@ -586,7 +586,7 @@ PROJECTS.append(build(
     slug="neupaterm",
     title="NeupaTerm (Plataforma terminológica)",
     title_html='NeupaTerm <span style="color:#6b7280; font-weight:400;">(Plataforma terminológica)</span>',
-    subtitle="Gestión terminológica multilingüe independiente del CAT, con fichas por par de idiomas y consulta desde cualquier herramienta de traducción",
+    subtitle="Gestión terminológica multilingüe independiente del CAT, con fichas en n lenguas y consulta desde cualquier herramienta de traducción",
     badge="Beta · accesible en línea",
     stack="FastAPI · React 18 + Vite · PostgreSQL · Redis/RQ · spaCy (ES·EN·FR·DE·IT) · NeupaTerm Connect (Tauri, offline-first) · Stripe · Render + Vercel",
     problema=[
@@ -595,7 +595,7 @@ PROJECTS.append(build(
         "Y una entrada terminológica de verdad no es una fila de dos columnas: un término tiene categoría gramatical, contextos de uso, notas, un estado (¿es el preferido? ¿está desaconsejado?) y relaciones con otros conceptos. Nada de eso cabe bien en una hoja de cálculo.",
     ],
     que_hace_paragraphs=[
-        "NeupaTerm es una <strong>plataforma web de gestión terminológica multilingüe, independiente del CAT</strong>. La terminología se organiza en <strong>fichas por par de idiomas</strong> (ES · EN · PT · DE · IT · FR): ES→EN es una ficha distinta de ES→PT, cada una con su categoría gramatical, sus contextos de uso reales y sus notas — en vez de una única entrada genérica multilingüe difícil de mantener.",
+        "NeupaTerm es una <strong>plataforma web de gestión terminológica multilingüe, independiente del CAT</strong>. La terminología se organiza en <strong>fichas en n lenguas</strong> (ES · EN · PT · DE · IT · FR): cada concepto es una sola ficha que reúne todas sus equivalencias, con su categoría gramatical, sus contextos de uso reales en cada idioma y sus notas — en vez de una ficha distinta por cada combinación de idiomas.",
         "Cada término tiene un <strong>ciclo de vida</strong> explícito (preferido, admitido, desaconsejado, obsoleto, prohibido), de modo que el glosario no solo dice cómo se traduce algo, sino también qué <em>no</em> usar.",
         "La <strong>búsqueda es difusa y multi-glosario</strong>: encuentra el término aunque lo escribas con una errata, sin tilde o en otra forma flexionada, y busca a la vez en todos los glosarios a los que tienes acceso.",
         "Importa y exporta en <strong>seis formatos</strong> — TBX (v2 y v3), XLIFF 2.1, TMX, CSV, Excel y JSON — para que la terminología no quede cautiva de la herramienta y se pueda mover a y desde cualquier flujo de traducción.",
@@ -611,20 +611,20 @@ PROJECTS.append(build(
             "Autenticación con token de sesión en memoria y refresco en cookie httpOnly, con opción de entrar con Google. Planes de usuario gestionados con Stripe. Observabilidad con seguimiento de errores y registro de auditoría. Integración continua en cada cambio; backend en Render, interfaz en Vercel (<code>neupaterm.com</code>).",
         ]),
         ("El origen del proyecto", [
-            "NeupaTerm nació como el instrumento experimental de una investigación doctoral en Lingüística Aplicada. El modelo de datos terminológico — la ficha por par de idiomas, el grafo conceptual con relaciones jerárquicas, partitivas y asociativas — es una decisión de diseño con fundamento teórico, no una improvisación de producto.",
+            "NeupaTerm nació como el instrumento experimental de una investigación doctoral en Lingüística Aplicada. El modelo de datos terminológico — la ficha en n lenguas, el grafo conceptual con relaciones jerárquicas, partitivas y asociativas — es una decisión de diseño con fundamento teórico, no una improvisación de producto.",
         ]),
         ("Un caso concreto", [
-            "Un equipo de traducción de software en cuatro idiomas que mantenía el glosario en una hoja de cálculo compartida, con términos duplicados y equivalencias inconsistentes entre traductores. Migrar ese glosario a fichas por par de idiomas, con contexto de uso real y estado de cada término, evita que dos traductores usen dos términos distintos para el mismo concepto en el mismo proyecto — y con Connect, cada uno lo tiene delante sin salir de su CAT.",
+            "Un equipo de traducción de software en cuatro idiomas que mantenía el glosario en una hoja de cálculo compartida, con términos duplicados y equivalencias inconsistentes entre traductores. Migrar ese glosario a fichas en n lenguas, con contexto de uso real y estado de cada término, evita que dos traductores usen dos términos distintos para el mismo concepto en el mismo proyecto — y con Connect, cada uno lo tiene delante sin salir de su CAT.",
         ]),
         ("Cómo empezamos", [
             "La plataforma está <strong>accesible en línea</strong> (<code>neupaterm.com</code>): se puede solicitar acceso y probarla directamente.",
-            "Para migrar un glosario ya existente (hoja de cálculo, TBX, TMX) se importa una vez y queda estructurado por pares de idioma desde el primer día. Si hace falta, hago yo la limpieza y el mapeo de campos del glosario de partida.",
+            "Para migrar un glosario ya existente (hoja de cálculo, TBX, TMX) se importa una vez y queda estructurado en fichas en n lenguas desde el primer día. Si hace falta, hago yo la limpieza y el mapeo de campos del glosario de partida.",
         ]),
     ],
     images=[
         ("neupaterm-landing.png", "Página de acceso", "Acceso", "entrada a la plataforma."),
         ("neupaterm-dashboard.png", "Panel de inicio", "Panel", "vista general de los glosarios del usuario."),
-        ("neupaterm-ficha.png", "Ficha terminológica", "Ficha", "categoría, contextos y equivalencias de un término, por par de idiomas."),
+        ("neupaterm-ficha.png", "Ficha terminológica", "Ficha", "categoría, contextos y equivalencias de un concepto en todas sus lenguas."),
         ("neupaterm-connect.png", "NeupaTerm Connect", "Connect", "consulta de terminología desde herramientas externas."),
     ],
     cols=2,
@@ -640,12 +640,12 @@ PROJECTS.append(build(
         ("¿Funciona la consulta sin conexión?",
          "Connect sí: mantiene una copia local y consulta offline; sincroniza cuando hay red. La plataforma web necesita conexión."),
         ("¿Puedo traer mi glosario actual?",
-         "Sí, desde hoja de cálculo, TBX o TMX. Se importa una vez y queda estructurado por pares de idioma."),
+         "Sí, desde hoja de cálculo, TBX o TMX. Se importa una vez y queda estructurado en fichas en n lenguas."),
         ("¿En qué idiomas trabaja?",
-         "Las fichas cubren pares entre español, inglés, portugués, alemán, italiano y francés. La interfaz está traducida a cinco idiomas."),
+         "Cada ficha puede reunir español, inglés, portugués, alemán, italiano y francés, y las lenguas que hagan falta. La interfaz está traducida a cinco idiomas."),
     ],
     services=[
-        "<strong>Confección y mantenimiento de un glosario terminológico multilingüe</strong> para una empresa o equipo de traducción, con fichas por par de idioma en vez de una hoja de cálculo.",
+        "<strong>Confección y mantenimiento de un glosario terminológico multilingüe</strong> para una empresa o equipo de traducción, con fichas en n lenguas en vez de una hoja de cálculo.",
         "<strong>Integración del glosario en las herramientas del día a día</strong> (Word, Trados, memoQ) vía NeupaTerm Connect.",
         "<strong>Extracción inicial de candidatos terminológicos</strong> mediante NLP sobre tu propio corpus, como punto de partida.",
         "<strong>Migración y limpieza</strong> de un glosario existente (hoja de cálculo, TBX, TMX) hacia una estructura mantenible.",
