@@ -666,6 +666,78 @@
   .shots img { height: 90px; width: auto; display: block; }
   .shots a:hover { border-color: var(--accent2); }
   @media (max-width: 640px) { .shots img { height: 66px; } }
+  .shots img { height: 120px; transition: transform 0.25s ease; }
+  .shots a:hover img { transform: scale(1.04); }
+  @media (max-width: 640px) { .shots img { height: 84px; } }
+  .pcard { scroll-margin-top: 1.5rem; }
+
+  /* ---- project showcase (visual grid above the detail cards) ---- */
+  .showcase {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.1rem;
+    margin: 1.6rem 0 2.4rem;
+  }
+  .stile {
+    grid-column: span 2; display: flex; flex-direction: column;
+    background: var(--card-bg); border: 1px solid var(--rule); border-radius: 10px;
+    overflow: hidden; color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .stile { min-width: 0; }
+  .stile.big { grid-column: span 3; }
+  .stile.half { grid-column: span 3; }
+  .stile:hover, .stile:focus-visible {
+    transform: translateY(-4px); border-color: var(--accent);
+    box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.55);
+  }
+  .smedia {
+    position: relative; aspect-ratio: 16 / 10; overflow: hidden;
+    background: linear-gradient(135deg, var(--card-bg), var(--rule));
+    border-bottom: 1px solid var(--rule);
+  }
+  .stile.big .smedia { aspect-ratio: 16 / 9; }
+  .smedia img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;
+    transition: transform 0.5s ease;
+  }
+  .stile:hover .smedia img { transform: scale(1.05); }
+  .smedia.noshot {
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(circle at 25% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
+      radial-gradient(circle at 80% 85%, color-mix(in srgb, var(--accent2) 22%, transparent), transparent 55%),
+      var(--card-bg);
+  }
+  .stile.half .smedia.noshot { aspect-ratio: 16 / 6; }
+  .smedia.noshot svg { width: 56px; height: 56px; color: var(--accent); opacity: 0.9; }
+  .sbadge {
+    position: absolute; bottom: 0.7rem; left: 0.7rem;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.02em;
+    padding: 0.2rem 0.55rem; border-radius: 999px;
+    background: var(--bg); color: var(--accent); border: 1px solid var(--accent);
+  }
+  .sbody { padding: 0.95rem 1.1rem 1.1rem; display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
+  .sname { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin: 0; }
+  .stag { font-size: 0.88rem; line-height: 1.5; color: var(--muted); margin: 0; }
+  .smore {
+    margin-top: auto; padding-top: 0.5rem;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.78rem; font-weight: 600; color: var(--accent);
+  }
+  .stile:hover .smore { color: var(--accent-hover); }
+  @media (max-width: 1000px) {
+    .showcase { grid-template-columns: 1fr 1fr; }
+    .stile, .stile.big, .stile.half { grid-column: span 1; }
+    .stile.big { grid-column: span 2; }
+  }
+  @media (max-width: 640px) {
+    .showcase { grid-template-columns: 1fr; }
+    .stile.big { grid-column: span 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stile, .smedia img, .shots img { transition: none; }
+    .stile:hover, .stile:hover .smedia img, .shots a:hover img { transform: none; }
+  }
 
   .pmanual {
     margin-top: 0.7rem; display: inline-flex; align-items: center; gap: 0.45rem;
@@ -1091,9 +1163,80 @@
     <h2 class="label" lang="en">Projects</h2>
     <p class="projects-note" lang="es">Son ejemplos de lo que sé construir, no la lista completa de lo que ofrezco — cada uno tiene un manual en PDF con más detalle. Si tu necesidad es distinta, <a href="mailto:juanmanuel@neupavert.com">hablemos</a>.</p>
     <p class="projects-note" lang="en">These are examples of what I can build, not the full list of what I offer — each one has a PDF manual with more detail. If your need is different, <a href="mailto:juanmanuel@neupavert.com">let's talk</a>.</p>
+    <div class="showcase">
+      <a class="stile big" href="#p-talcual">
+        <div class="smedia"><img src="assets/projects/talcual-espacio.png" alt="TalCual — temario con asistente al lado" loading="lazy"><span class="sbadge"><span lang="es">demo a petición</span><span lang="en">demo on request</span></span></div>
+        <div class="sbody">
+          <p class="sname">TalCual</p>
+          <p class="stag" lang="es">Asistente de estudio que responde solo con el temario y cita el artículo y la página.</p>
+          <p class="stag" lang="en">Study assistant that answers only from the syllabus and cites article and page.</p>
+          <span class="smore"><span lang="es">Ver detalle →</span><span lang="en">See details →</span></span>
+        </div>
+      </a>
+
+      <a class="stile big" href="#p-neupaterm">
+        <div class="smedia"><img src="assets/projects/neupaterm-dashboard.png" alt="NeupaTerm — panel de inicio" loading="lazy"><span class="sbadge"><span lang="es">en desarrollo</span><span lang="en">in development</span></span></div>
+        <div class="sbody">
+          <p class="sname">NeupaTerm</p>
+          <p class="stag" lang="es">Plataforma terminológica multilingüe, independiente del CAT, con fichas en n lenguas.</p>
+          <p class="stag" lang="en">CAT-independent multilingual terminology platform with n-language records.</p>
+          <span class="smore"><span lang="es">Ver detalle →</span><span lang="en">See details →</span></span>
+        </div>
+      </a>
+
+      <a class="stile " href="#p-ragdesk">
+        <div class="smedia"><img src="assets/projects/ragdesk-respuesta.png" alt="RagDesk — respuesta con cita a la página" loading="lazy"><span class="sbadge"><span lang="es">demo a petición</span><span lang="en">demo on request</span></span></div>
+        <div class="sbody">
+          <p class="sname">RagDesk</p>
+          <p class="stag" lang="es">Pregunta a tus documentos y obtén la respuesta con la página exacta de origen.</p>
+          <p class="stag" lang="en">Ask your documents and get the answer with the exact source page.</p>
+          <span class="smore"><span lang="es">Ver detalle →</span><span lang="en">See details →</span></span>
+        </div>
+      </a>
+
+      <a class="stile " href="#p-alzolab">
+        <div class="smedia"><img src="assets/projects/alzolab-concordancia.png" alt="AlzoLab — concordancias KWIC" loading="lazy"><span class="sbadge"><span lang="es">en producción</span><span lang="en">in production</span></span></div>
+        <div class="sbody">
+          <p class="sname">AlzoLab</p>
+          <p class="stag" lang="es">Laboratorio de lingüística de corpus en el navegador, sin escribir código.</p>
+          <p class="stag" lang="en">Browser-based corpus-linguistics lab, no coding required.</p>
+          <span class="smore"><span lang="es">Ver detalle →</span><span lang="en">See details →</span></span>
+        </div>
+      </a>
+
+      <a class="stile " href="#p-ocr">
+        <div class="smedia noshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="8" y1="18" x2="13" y2="18"/></svg><span class="sbadge"><span lang="es">servicio activo</span><span lang="en">active service</span></span></div>
+        <div class="sbody">
+          <p class="sname">Digitalización documental</p>
+          <p class="stag" lang="es">Escáner cenital + OCR 100% local, con revisión humana página a página.</p>
+          <p class="stag" lang="en">Overhead scanner + fully local OCR, with page-by-page human review.</p>
+          <span class="smore"><span lang="es">Ver detalle →</span><span lang="en">See details →</span></span>
+        </div>
+      </a>
+
+      <a class="stile half" href="#p-neualz">
+        <div class="smedia noshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3z"/><line x1="8.5" y1="8" x2="15.5" y2="8"/><line x1="8.5" y1="11" x2="15.5" y2="11"/></svg><span class="sbadge"><span lang="es">en desarrollo</span><span lang="en">in development</span></span></div>
+        <div class="sbody">
+          <p class="sname">NeuAlz</p>
+          <p class="stag" lang="es">Lector de PDF y base de conocimiento, todo en local.</p>
+          <p class="stag" lang="en">PDF reader and knowledge base, all local.</p>
+          <span class="smore"><span lang="es">Ver detalle →</span><span lang="en">See details →</span></span>
+        </div>
+      </a>
+
+      <a class="stile half" href="#p-neupalang">
+        <div class="smedia noshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="6" x2="4" y2="9"/><line x1="10" y1="6" x2="10" y2="9"/><line x1="16" y1="6" x2="16" y2="9"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="12" x2="4" y2="15"/><line x1="10" y1="12" x2="10" y2="15"/><line x1="16" y1="12" x2="16" y2="15"/><line x1="4" y1="18" x2="15" y2="18"/></svg><span class="sbadge"><span lang="es">en desarrollo</span><span lang="en">in development</span></span></div>
+        <div class="sbody">
+          <p class="sname">NeupaLang</p>
+          <p class="stag" lang="es">Documentación de lenguas minoritarias y en peligro.</p>
+          <p class="stag" lang="en">Documentation of minority and endangered languages.</p>
+          <span class="smore"><span lang="es">Ver detalle →</span><span lang="en">See details →</span></span>
+        </div>
+      </a>
+    </div>
     <div class="project-cards">
 
-      <article class="pcard">
+      <article class="pcard" id="p-ocr">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="8" y1="18" x2="13" y2="18"/></svg></span>
           <p class="project-title">Digitalización documental <span class="project-parens" lang="es">(escáner + OCR local)</span><span class="project-parens" lang="en">(scanner + local OCR)</span></p>
@@ -1110,11 +1253,11 @@
         </a>
       </article>
 
-      <article class="pcard">
+      <article class="pcard" id="p-ragdesk">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="12.5" x2="14" y2="12.5"/></svg></span>
           <p class="project-title">RagDesk <span class="project-parens" lang="es">(Asistente documental privado)</span><span class="project-parens" lang="en">(Private document assistant)</span></p>
-          <span class="pmeta" lang="es">Demo pública</span><span class="pmeta" lang="en">Live demo</span>
+          <span class="pmeta" lang="es">Demo a petición</span><span class="pmeta" lang="en">Demo on request</span>
         </div>
         <p class="pdesc" lang="es">Responde preguntas en lenguaje natural sobre una colección de documentos, citando siempre la página exacta de origen. Funciona enteramente en local cuando así se requiere, sin subir la documentación a ningún servicio externo; admite modelos en la nube como alternativa configurable.</p>
         <p class="pdesc" lang="en">Answers natural-language questions over a document collection, always citing the exact source page. Runs entirely locally when required, with no documents leaving the machine; cloud models are supported as a configurable alternative.</p>
@@ -1126,8 +1269,8 @@
           <a href="assets/projects/ragdesk-documentos.png" target="_blank" rel="noopener"><img src="assets/projects/thumbs/ragdesk-documentos.png" alt="RagDesk — documentos ingestados" width="280" height="180" loading="lazy"></a>
         </div>
         <p class="demo-cta">
-          <span lang="es">Pruébala en</span><span lang="en">Try it at</span>
-          <a href="https://ragdesk.neupavert.com" target="_blank" rel="noopener">ragdesk.neupavert.com</a>
+          <span lang="es">¿Quieres una demo?</span><span lang="en">Want a demo?</span>
+          <a href="mailto:juanmanuel@neupavert.com?subject=Demo%20de%20RagDesk"><span lang="es">Contáctanos</span><span lang="en">Get in touch</span></a>
         </p>
         <a class="pmanual" href="assets/manuals/ragdesk.pdf" target="_blank" rel="noopener">
           <span class="pmanual-icon">PDF</span>
@@ -1136,11 +1279,11 @@
         </a>
       </article>
 
-      <article class="pcard">
+      <article class="pcard" id="p-talcual">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11.5V16c0 1.2 2.7 3 6 3s6-1.8 6-3v-4.5"/><line x1="22" y1="9" x2="22" y2="15"/></svg></span>
           <p class="project-title">TalCual <span class="project-parens" lang="es">(Asistente de estudio para academias de oposiciones)</span><span class="project-parens" lang="en">(Study assistant for exam-prep academies)</span></p>
-          <span class="pmeta" lang="es">Piloto con academias</span><span class="pmeta" lang="en">Pilot with academies</span>
+          <span class="pmeta" lang="es">Demo a petición</span><span class="pmeta" lang="en">Demo on request</span>
         </div>
         <p class="pdesc" lang="es">Un asistente para los alumnos de una academia que responde solo con su temario, cita el artículo y la página y abre el documento en el pasaje exacto. Si el alumno duda, pide revisión a un preparador; esa respuesta queda guardada y revisada para los siguientes. Incluye tests por tema enlazados al punto del temario que responde cada pregunta.</p>
         <p class="pdesc" lang="en">An assistant for an academy's students that answers only from its syllabus, cites the article and page, and opens the document at the exact passage. If a student has doubts, they can ask a tutor to review it; that answer is saved and verified for the next students. It includes topic tests linked to the exact point of the syllabus that answers each question.</p>
@@ -1155,6 +1298,10 @@
         <p class="projects-note" lang="en">Screenshots of the application with a demonstration syllabus (text of Spanish Law 39/2015, BOE); fictitious academy and users.</p>
         <p class="projects-note" lang="es">Se empieza con un piloto corto y gestionado, sobre un tema de tu temario. El asistente puede equivocarse: por eso cita siempre la fuente y existe la revisión por un preparador.</p>
         <p class="projects-note" lang="en">It starts with a short, managed pilot on one topic of your syllabus. The assistant can be wrong, which is why it always cites its source and tutor review exists.</p>
+        <p class="demo-cta">
+          <span lang="es">¿Quieres una demo?</span><span lang="en">Want a demo?</span>
+          <a href="mailto:juanmanuel@neupavert.com?subject=Demo%20de%20TalCual"><span lang="es">Contáctanos</span><span lang="en">Get in touch</span></a>
+        </p>
         <a class="pmanual" href="assets/manuals/talcual.pdf" target="_blank" rel="noopener">
           <span class="pmanual-icon">PDF</span>
           <span lang="es">Cómo funciona, para academias de oposiciones</span>
@@ -1162,7 +1309,7 @@
         </a>
       </article>
 
-      <article class="pcard">
+      <article class="pcard" id="p-neualz">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4V3z"/><line x1="8.5" y1="8" x2="15.5" y2="8"/><line x1="8.5" y1="11" x2="15.5" y2="11"/></svg></span>
           <p class="project-title">NeuAlz<span class="project-parens" lang="es">(Lector de PDF y base de conocimiento)</span><span class="project-parens" lang="en">(PDF reader &amp; knowledge base)</span></p>
@@ -1178,7 +1325,7 @@
         </a>
       </article>
 
-      <article class="pcard">
+      <article class="pcard" id="p-alzolab">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4"/><path d="M10.5 3v5.5L5.8 17a1.6 1.6 0 0 0 1.4 2.4h9.6a1.6 1.6 0 0 0 1.4-2.4L13.5 8.5V3"/><line x1="8.3" y1="14" x2="15.7" y2="14"/></svg></span>
           <p class="project-title"><a href="https://jmneupavert-alzolab.hf.space/" target="_blank" rel="noopener">AlzoLab</a></p>
@@ -1201,7 +1348,7 @@
         <a class="pcasestudy" href="/proyectos/alzolab/"><span lang="es">Ver caso de estudio</span><span lang="en">View case study</span></a>
       </article>
 
-      <article class="pcard">
+      <article class="pcard" id="p-neupaterm">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.3"/><circle cx="17" cy="7" r="2.3"/><circle cx="12" cy="17" r="2.3"/><line x1="8.9" y1="8.3" x2="10.5" y2="15"/><line x1="15.1" y1="8.3" x2="13.5" y2="15"/><line x1="9.3" y1="7" x2="14.7" y2="7"/></svg></span>
           <p class="project-title"><a href="https://www.neupaterm.com" target="_blank" rel="noopener">NeupaTerm</a> <span class="project-parens" lang="es">(Plataforma terminológica)</span><span class="project-parens" lang="en">(Terminology platform)</span></p>
@@ -1224,7 +1371,7 @@
         <a class="pcasestudy" href="/proyectos/neupaterm/"><span lang="es">Ver caso de estudio</span><span lang="en">View case study</span></a>
       </article>
 
-      <article class="pcard">
+      <article class="pcard" id="p-neupalang">
         <div class="pcard-head">
           <span class="plogo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="6" x2="4" y2="9"/><line x1="10" y1="6" x2="10" y2="9"/><line x1="16" y1="6" x2="16" y2="9"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="12" x2="4" y2="15"/><line x1="10" y1="12" x2="10" y2="15"/><line x1="16" y1="12" x2="16" y2="15"/><line x1="4" y1="18" x2="15" y2="18"/></svg></span>
           <p class="project-title">NeupaLang <span class="project-parens" lang="es">(Documentación lingüística)</span><span class="project-parens" lang="en">(Language documentation)</span></p>
@@ -1282,8 +1429,8 @@
         <span class="tag">[documentación técnica]</span>
         <strong lang="es">Asistente sobre manuales y procedimientos</strong>
         <strong lang="en">Assistant over manuals and procedures</strong>
-        <p lang="es">Una empresa con manuales de producto, procedimientos internos y normativa dispersa en cientos de documentos podría centralizarlos en un asistente de consulta privado, para que cualquier empleado pregunte en lenguaje natural en vez de bucear en carpetas compartidas. Puedes ver el patrón funcionando en la <a href="https://ragdesk.neupavert.com" target="_blank" rel="noopener">demo pública de RagDesk</a>.</p>
-        <p lang="en">A company with product manuals, internal procedures and regulations scattered across hundreds of documents could centralize them into a private query assistant, so any employee can ask in natural language instead of digging through shared folders. You can see the pattern in action in the <a href="https://ragdesk.neupavert.com" target="_blank" rel="noopener">public RagDesk demo</a>.</p>
+        <p lang="es">Una empresa con manuales de producto, procedimientos internos y normativa dispersa en cientos de documentos podría centralizarlos en un asistente de consulta privado, para que cualquier empleado pregunte en lenguaje natural en vez de bucear en carpetas compartidas. Si quieres verlo funcionando, <a href="mailto:juanmanuel@neupavert.com?subject=Demo%20de%20RagDesk">pide una demo de RagDesk</a>.</p>
+        <p lang="en">A company with product manuals, internal procedures and regulations scattered across hundreds of documents could centralize them into a private query assistant, so any employee can ask in natural language instead of digging through shared folders. If you'd like to see it running, <a href="mailto:juanmanuel@neupavert.com?subject=RagDesk%20demo">request a RagDesk demo</a>.</p>
         <span class="usecase-badge" lang="es">demostrador — sin cliente real</span>
         <span class="usecase-badge" lang="en">demonstrator — no real client</span>
       </div>
